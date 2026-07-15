@@ -1,0 +1,74 @@
+:root {
+  /* Color Palette */
+  --bg-primary: #0D0D0D;
+  --bg-secondary: #111111;
+  --bg-card: #1C1C1C;
+  --accent-gold: #C9A25D;
+  --accent-gold-hover: #D4AF7A;
+  --text-primary: #ffffff;
+  --text-secondary: #A8A8A8;
+  --border-color: rgba(255, 255, 255, 0.1);
+
+  /* Typography */
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Montserrat', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  color: var(--text-primary);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--accent-gold);
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-sans);
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+.gold-text {
+  color: var(--accent-gold);
+}
+
+.italic {
+  font-style: italic;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}

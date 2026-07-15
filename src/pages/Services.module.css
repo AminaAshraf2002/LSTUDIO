@@ -1,0 +1,585 @@
+/* ========================================================================= */
+/* L STUDIO SERVICES - LUMINA INSPIRED REDESIGN
+/* ========================================================================= */
+
+.servicesPage {
+  background-color: #ffffff;
+  color: #3b3531;
+  font-family: var(--font-sans) !important;
+  padding-bottom: 80px;
+}
+
+/* ================== 1. HERO SECTION ================== */
+.heroSection {
+  background-image: linear-gradient(to right, rgba(247, 245, 240, 0.075) 0%, rgba(247, 245, 240, 0) 60%, transparent 100%), url('../assets/services.png');
+  background-size: cover;
+  background-position: center;
+  padding: 160px 0 100px;
+  position: relative;
+}
+
+.heroLayout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+}
+
+.heroTextContent {
+  flex: 1;
+  max-width: 500px;
+}
+
+.heroTitle {
+  font-family: var(--font-sans) !important;
+  font-size: 3.5rem;
+  line-height: 1.1;
+  color: #3b3531;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.heroDesc {
+  font-size: 0.95rem;
+  color: #5d5650;
+  margin-bottom: 40px;
+  line-height: 1.6;
+  max-width: 80%;
+}
+
+.heroActions {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.primaryBtn {
+  background-color: #c0a887 !important;
+  color: #ffffff !important;
+  border-radius: 40px !important;
+  padding: 14px 30px !important;
+  font-size: 0.85rem !important;
+  border: none !important;
+  font-weight: 500 !important;
+}
+
+.primaryBtn:hover {
+  background-color: #a89171 !important;
+}
+
+.tourBtn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: transparent;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #3b3531;
+  cursor: pointer;
+}
+
+.playIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #d4c9bd;
+  font-size: 0.8rem;
+  color: #c0a887;
+  padding-left: 2px;
+}
+
+/* ================== 2. FEATURES BAR ================== */
+.featuresSection {
+  padding: 60px 0;
+  border-bottom: 1px solid #eeebe5;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.featureIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background-color: #f7f5f0;
+  border: 1px solid #e8e2d8;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  color: #c0a887;
+}
+
+.featureText h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #3b3531;
+    font-family: var(--font-sans) !important;
+
+}
+
+.featureText p {
+  font-size: 0.75rem;
+  color: #8c837a;
+  line-height: 1.5;
+}
+
+/* ================== 3. POPULAR PROCEDURES ================== */
+.proceduresSection {
+  padding: 100px 0;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.sectionTitle {
+  font-family: var(--font-sans) !important;
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: #3b3531;
+}
+
+.viewAllLink {
+  font-size: 0.85rem;
+  color: #8c837a;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.viewAllLink:hover {
+  color: #c0a887;
+}
+
+.filterGroup {
+  display: flex;
+  gap: 12px;
+}
+
+.filterBtn {
+  background-color: transparent;
+  border: 1px solid #e8e2d8;
+  padding: 8px 20px;
+  border-radius: 40px;
+  font-family: var(--font-sans) !important;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #8c837a;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filterBtn:hover {
+  border-color: #c0a887;
+  color: #c0a887;
+}
+
+.filterBtn.activeFilter {
+  background-color: #c0a887;
+  border-color: #c0a887;
+  color: #ffffff;
+}
+
+.proceduresGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.procedureCard {
+  background-color: #f8f6f0;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardImgWrapper {
+  position: relative;
+  width: 100%;
+  height: 300px;
+}
+
+.cardImgWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cardTag {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(4px);
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #c0a887;
+}
+
+.cardContent {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.cardContent h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #3b3531;
+    font-family: var(--font-sans) !important;
+
+}
+
+.cardContent p {
+  font-size: 0.75rem;
+  color: #8c837a;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #3b3531;
+}
+
+.arrowBtn {
+  background: transparent;
+  border: none;
+  color: #3b3531;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* ================== 4. ABOUT CLINIC ================== */
+.aboutClinicSection {
+  padding: 40px 0;
+}
+
+.aboutClinicLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.5fr;
+  gap: 40px;
+  background-color: #f8f6f0;
+  border-radius: 24px;
+  padding: 40px;
+  align-items: center;
+}
+
+.aboutImageWrapper {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.aboutImageWrapper img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+
+.logoOverlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-sans) !important;
+  font-size: 1.5rem;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 4px;
+}
+
+.aboutContent {
+  padding-right: 20px;
+}
+
+.aboutTitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  color: #3b3531;
+    font-family: var(--font-sans) !important;
+
+}
+
+.aboutDesc {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #5d5650;
+  margin-bottom: 24px;
+}
+
+.aboutChecklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.aboutChecklist li {
+  font-size: 0.85rem;
+  color: #5d5650;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.check {
+  color: #c0a887;
+  font-size: 1rem;
+}
+
+.aboutStats {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  border-left: 1px solid #e8e2d8;
+  padding-left: 40px;
+}
+
+.statItem h4 {
+  font-family: var(--font-sans) !important;
+  font-size: 1.8rem;
+  color: #3b3531;
+  margin-bottom: 4px;
+}
+
+.statItem p {
+  font-size: 0.75rem;
+  color: #8c837a;
+}
+
+/* ================== 5. COMPREHENSIVE APPROACH ================== */
+.approachSection {
+  padding: 100px 0;
+  text-align: center;
+}
+
+.approachTitle {
+  font-family: var(--font-sans) !important;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #3b3531;
+  margin-bottom: 60px;
+}
+
+.approachGrid {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.stepItem {
+  flex: 1;
+  max-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stepIconWrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background-color: #f8f6f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #c0a887;
+  border: 1px solid #e8e2d8;
+}
+
+.stepItem h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #3b3531;
+  margin-bottom: 8px;
+    font-family: var(--font-sans) !important;
+
+}
+
+.stepItem p {
+  font-size: 0.75rem;
+  color: #8c837a;
+  line-height: 1.5;
+}
+
+.stepArrow {
+  font-size: 1.2rem;
+  color: #e8e2d8;
+  margin-top: 24px;
+}
+
+/* ================== 6. PROMO BANNER ================== */
+.promoSection {
+  padding: 40px 0 100px;
+}
+
+.promoBanner {
+  background-image: url('https://i.pinimg.com/736x/b3/56/ad/b356adb9f740e15f89c8cb1b51607f2b.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 24px;
+  padding: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.promoBanner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(248,246,240,0.9) 0%, rgba(248,246,240,0.4) 60%, transparent 100%);
+}
+
+.promoContent {
+  position: relative;
+  z-index: 1;
+  max-width: 400px;
+}
+
+.promoContent h2 {
+  font-family: var(--font-sans) !important;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #3b3531;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.promoContent p {
+  font-size: 0.85rem;
+  color: #5d5650;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.promoBtn {
+  background-color: #ffffff;
+  color: #3b3531;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 40px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.promoBtn:hover {
+  background-color: #f7f5f0;
+}
+
+/* ================== MEDIA QUERIES ================== */
+@media (max-width: 1024px) {
+  .heroLayout, .aboutClinicLayout {
+    flex-direction: column;
+    text-align: center;
+  }
+  .aboutClinicLayout {
+    grid-template-columns: 1fr;
+  }
+  .aboutStats {
+    border-left: none;
+    border-top: 1px solid #e8e2d8;
+    padding-left: 0;
+    padding-top: 30px;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .proceduresGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .featuresGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .approachGrid {
+    flex-direction: column;
+    align-items: center;
+  }
+  .stepArrow {
+    transform: rotate(90deg);
+    margin: 10px 0;
+  }
+  .proceduresGrid {
+    grid-template-columns: 1fr;
+  }
+  .promoContent {
+    max-width: 100%;
+    text-align: center;
+  }
+  .promoBanner::before {
+    background: rgba(248,246,240,0.85);
+  }
+  .heroSection {
+    padding: 120px 0 60px !important;
+  }
+  .heroTitle {
+    font-size: 2.2rem !important;
+  }
+  .primaryBtn {
+    padding: 10px 20px !important;
+    font-size: 0.75rem !important;
+  }
+  .sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .filterBtn {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
+  .filterGroup {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroSection {
+    padding: 100px 0 40px !important;
+  }
+  .heroTitle {
+    font-size: 1.8rem !important;
+  }
+}

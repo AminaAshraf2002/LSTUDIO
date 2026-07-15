@@ -1,0 +1,279 @@
+/* ========================================================================= */
+/* L STUDIO CONTACT - LUMINA INSPIRED REDESIGN
+/* ========================================================================= */
+
+.contactPage {
+  background-color: #ffffff;
+  color: #3b3531;
+  font-family: var(--font-sans) !important;
+  padding-bottom: 80px;
+}
+
+/* ================== 1. HERO SECTION ================== */
+.heroSection {
+  background-image: linear-gradient(to right, rgba(247, 245, 240, 0) 0%, rgba(247, 245, 240, 0) 60%, transparent 100%), url('../assets/make.png');
+  background-size: cover;
+  background-position: center;
+  padding: 160px 0 100px;
+  position: relative;
+}
+
+.heroLayout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+}
+
+.heroTextContent {
+  flex: 1;
+  max-width: 500px;
+}
+
+.heroTitle {
+  font-family: var(--font-sans) !important;
+  font-size: 3.5rem;
+  line-height: 1.1;
+  color: #3b3531;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.heroDesc {
+  font-size: 0.95rem;
+  color: #5d5650;
+  margin-bottom: 40px;
+  line-height: 1.6;
+  max-width: 80%;
+}
+
+.heroActions {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.tourBtn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: transparent;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #3b3531;
+  cursor: pointer;
+}
+
+.playIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #d4c9bd;
+  font-size: 0.8rem;
+  color: #c0a887;
+}
+
+/* ================== 2. CONTACT SECTION ================== */
+.contactSection {
+  padding: 80px 0;
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 60px;
+}
+
+.sectionTitle {
+  font-family: var(--font-sans) !important;
+  font-size: 1.8rem;
+  color: #3b3531;
+  margin-bottom: 30px;
+  font-weight: 400;
+}
+
+/* FORM SIDE */
+.formContainer {
+  background-color: #f8f6f0;
+  padding: 50px;
+  border-radius: 24px;
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.inputRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inputGroup label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #8c837a;
+}
+
+.inputGroup input,
+.inputGroup select,
+.inputGroup textarea {
+  width: 100%;
+  padding: 16px 20px;
+  background-color: #ffffff;
+  border: 1px solid #e8e2d8;
+  border-radius: 12px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: #3b3531;
+  transition: all 0.3s ease;
+}
+
+.inputGroup input:focus,
+.inputGroup select:focus,
+.inputGroup textarea:focus {
+  outline: none;
+  border-color: #c0a887;
+  box-shadow: 0 0 0 4px rgba(192, 168, 135, 0.1);
+}
+
+.submitBtn {
+  background-color: #3b3531;
+  color: #ffffff;
+  border: none;
+  padding: 18px 30px;
+  border-radius: 40px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+.submitBtn:hover {
+  background-color: #c0a887;
+}
+
+/* INFO SIDE */
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding-top: 20px;
+}
+
+.infoBlock {
+  border-bottom: 1px solid #e8e2d8;
+  padding-bottom: 30px;
+}
+
+.infoBlock:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.location {
+  margin-bottom: 24px;
+}
+
+.location:last-child {
+  margin-bottom: 0;
+}
+
+.location h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #3b3531;
+  margin-bottom: 6px;
+  letter-spacing: 1px;
+  font-family: var(--font-sans) !important;
+
+}
+
+.location p {
+  font-size: 0.85rem;
+  color: #5d5650;
+  line-height: 1.5;
+}
+
+.emailLink {
+  font-size: 1.1rem;
+  color: #c0a887;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.emailLink:hover {
+  color: #3b3531;
+}
+
+.hoursList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.hoursList li {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #5d5650;
+  margin-bottom: 12px;
+  border-bottom: 1px dashed #e8e2d8;
+  padding-bottom: 12px;
+}
+
+.hoursList li:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 1024px) {
+  .contactGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .inputRow {
+    grid-template-columns: 1fr;
+  }
+  
+  .formContainer {
+    padding: 30px 20px;
+  }
+  
+  .heroTitle {
+    font-size: 2.2rem !important;
+  }
+  .heroSection {
+    padding: 120px 0 60px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroSection {
+    padding: 100px 0 40px !important;
+  }
+  .heroTitle {
+    font-size: 1.8rem !important;
+  }
+}

@@ -1,0 +1,240 @@
+.heritageSection {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: #000;
+  padding: 0;
+  overflow: hidden;
+}
+
+.heritageContainer {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 0; /* Add padding for long content */
+}
+
+/* Corner Images - Absolute Positioned */
+.cornerImage {
+  position: absolute;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.cornerImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Top Left Image */
+.topLeft {
+  top: 0;
+  left: 0;
+  width: 25vw;
+  height: 70vh;
+}
+
+/* Top Right Image */
+.topRight {
+  top: 0;
+  right: 0;
+  width: 25vw;
+  height: 70vh;
+}
+
+/* Bottom Left Image */
+.bottomLeft {
+  bottom: 0;
+  left: 180px;
+  width: 18vw;
+  height: 43vh;
+}
+
+/* Bottom Right Image */
+.bottomRight {
+  bottom: 0;
+  right: 180px;
+  width: 18vw;
+  height: 43vh;
+}
+
+/* Center Content - Overlays Images */
+.heritageContent {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 900px;
+  padding: 4rem 3rem;
+}
+
+.quoteText {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem,3vw, 2rem);
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.3;
+  margin: 0 0 3rem 0;
+}
+
+.quoteBody {
+  margin-bottom: 2.5rem;
+}
+
+.quoteBody p {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0 0 1.5rem 0;
+  font-weight: 300;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .topLeft {
+    width: 28vw;
+    height: 55vh;
+  }
+
+  .topRight {
+    width: 30vw;
+    height: 50vh;
+  }
+
+  .bottomLeft {
+    width: 29vw;
+    height: 60vh;
+  }
+
+  .bottomRight {
+    width: 32vw;
+    height: 65vh;
+  }
+
+  .heritageContent {
+    max-width: 800px;
+    padding: 3rem 2.5rem;
+  }
+
+  .quoteText {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    margin-bottom: 2rem;
+  }
+
+  .quoteBody p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .topLeft {
+    width: 30vw;
+    height: 50vh;
+  }
+
+  .topRight {
+    width: 32vw;
+    height: 48vh;
+  }
+
+  .bottomLeft {
+    width: 30vw;
+    height: 55vh;
+  }
+
+  .bottomRight {
+    width: 34vw;
+    height: 60vh;
+  }
+
+  .heritageContent {
+    max-width: 700px;
+    padding: 3rem 2rem;
+  }
+
+  .quoteText {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .topLeft {
+    width: 35vw;
+    height: 45vh;
+  }
+
+  .topRight {
+    width: 35vw;
+    height: 42vh;
+  }
+
+  .bottomLeft {
+    width: 35vw;
+    height: 50vh;
+  }
+
+  .bottomRight {
+    width: 38vw;
+    height: 55vh;
+  }
+
+  .heritageContent {
+    max-width: 600px;
+    padding: 2.5rem 1.5rem;
+  }
+
+  .quoteText {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    margin-bottom: 1.5rem;
+  }
+
+  .quoteBody p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cornerImage {
+    opacity: 0.3;
+  }
+
+  .topLeft {
+    width: 40vw;
+    height: 35vh;
+  }
+
+  .topRight {
+    width: 42vw;
+    height: 32vh;
+  }
+
+  .bottomLeft {
+    width: 40vw;
+    height: 40vh;
+  }
+
+  .bottomRight {
+    width: 44vw;
+    height: 45vh;
+  }
+
+  .heritageContent {
+    max-width: 100%;
+    padding: 2rem 1rem;
+  }
+
+  .quoteText {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .quoteBody p {
+    font-size: 0.9rem;
+  }
+}
