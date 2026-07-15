@@ -86,7 +86,7 @@ body {
   font-size: 60px;
   font-weight: 500;
   line-height: 1.1;
-  color: var(--text-primary);
+  color: black;
   margin-bottom: 15px;
   letter-spacing: -0.5px;
   font-family: 'Montserrat', sans-serif;
@@ -104,7 +104,7 @@ body {
   font-size: 24px;
   font-weight: 500;
   margin: 30px 0 55px;
-  color: white;
+  color: rgb(32, 32, 32);
   font-family: 'Montserrat', sans-serif;
   will-change: opacity, transform;
 }
@@ -151,14 +151,6 @@ body {
   transition: none !important;
 }
 
-.card-item::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 70%);
-  z-index: 2;
-  pointer-events: none;
-}
 
 .card-item img {
   display: block;
@@ -178,8 +170,7 @@ body {
   font-weight: 600;
   font-size: 22px;
   line-height: 1.2;
-  color: var(--text-primary);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  color: black;
   font-family: 'Montserrat', sans-serif;
   pointer-events: none;
   z-index: 10;
@@ -2025,9 +2016,6 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
-  .hero-bg-overlay::after {
-    background: rgba(0, 0, 0, 0.3);
-  }
   .text-box .hero-title,
   .text-box .hero-subtitle {
     color: #ffffff;
@@ -2035,9 +2023,6 @@ body {
 }
 
 @media (prefers-color-scheme: light) {
-  .hero-bg-overlay::after {
-    background: rgba(0, 0, 0, 0.2);
-  }
 }
 
 @media print {

@@ -117,7 +117,7 @@ function HeroSection({ data }) {
       left: relativeLeft,
       width: rect.width,
       height: rect.height,
-      backgroundImage: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(${nextBgImage})`,
+      backgroundImage: `url(${nextBgImage})`,
       opacity: 1,
       scale: 1,
       x: 0,
