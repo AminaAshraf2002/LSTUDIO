@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import styles from './Navbar.module.css';
 import Button from './Button';
 import { Menu, X } from 'lucide-react';
@@ -10,6 +10,8 @@ const Navbar = () => {
   const [isHidden, setIsHidden] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const lastScrollY = useRef(0);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,7 +46,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`${styles.navbar} ${isScrolled ? styles.scrolled : ''} ${isHidden ? styles.hidden : ''}`}>
+    <nav className={`${styles.navbar} ${(isScrolled || !isHomePage) ? styles.scrolled : ''} ${isHidden ? styles.hidden : ''}`}>
       <div className={styles.container}>
         <div className={styles.logo}>
           <NavLink to="/">
@@ -69,7 +71,7 @@ const Navbar = () => {
           <div className={styles.icons}>
             {/* Additional icon buttons could go here based on the design (e.g., search, cart if needed, but not specified directly except in text "icon buttons") */}
           </div>
-          <Button to="/contact" variant="white" id="nav-book-now-btn" className={isScrolled ? styles.scrolledBtn : ''}>BOOK NOW</Button>
+          <Button to="/contact" variant="white" id="nav-book-now-btn" className={(isScrolled || !isHomePage) ? styles.scrolledBtn : ''}>BOOK NOW</Button>
           
           <button 
             id="nav-mobile-menu-btn"

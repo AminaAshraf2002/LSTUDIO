@@ -13,7 +13,7 @@ const Contact = () => {
           <div className={styles.heroLayout}>
             <div className={styles.heroTextContent}>
               <h1 className={styles.heroTitle}>
-                CONNECT<br />WITH<br />US
+                CONNECT<br />WITH US
               </h1>
               <p className={styles.heroDesc}>
                 Whether you are looking to book an appointment, inquire about our bespoke services, or discuss a collaboration, our concierge team is here to assist you.

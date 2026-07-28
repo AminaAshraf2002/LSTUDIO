@@ -11,45 +11,67 @@
 
 /* ================== 1. HERO SECTION ================== */
 .heroSection {
-  background-image: linear-gradient(to right, rgba(247, 245, 240, 0) 0%, rgba(247, 245, 240, 0) 60%, transparent 100%), url('../assets/make.png');
+  position: relative;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-image: url('../assets/make.png');
   background-size: cover;
   background-position: center;
-  padding: 160px 0 100px;
-  position: relative;
+  overflow: hidden;
+}
+
+.heroSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(13, 13, 13, 0.2), rgba(13,13,13,0.8));
 }
 
 .heroLayout {
+  position: relative;
+  z-index: 10;
+  padding: 0 20px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  gap: 60px;
+  justify-content: center;
+  width: 100%;
 }
 
 .heroTextContent {
-  flex: 1;
-  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
 }
 
 .heroTitle {
   font-family: var(--font-sans) !important;
   font-size: 3.5rem;
   line-height: 1.1;
-  color: #3b3531;
+  color: #ffffff !important;
   margin-bottom: 24px;
   text-transform: uppercase;
 }
 
 .heroDesc {
-  font-size: 0.95rem;
-  color: #5d5650;
+  font-size: 1.125rem;
+  color: #ffffff;
   margin-bottom: 40px;
   line-height: 1.6;
-  max-width: 80%;
+  max-width: 600px;
 }
 
 .heroActions {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 30px;
 }
 
@@ -62,7 +84,7 @@
   font-family: var(--font-sans);
   font-size: 0.85rem;
   font-weight: 600;
-  color: #3b3531;
+  color: #ffffff;
   cursor: pointer;
 }
 
@@ -73,9 +95,9 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 1px solid #d4c9bd;
+  border: 1px solid #ffffff;
   font-size: 0.8rem;
-  color: #c0a887;
+  color: #ffffff;
 }
 
 /* ================== 2. CONTACT SECTION ================== */
@@ -261,19 +283,34 @@
     padding: 30px 20px;
   }
   
+  .heroSection {
+    height: 400px !important;
+    min-height: 400px !important;
+    padding: 60px 0 0 0 !important;
+    background-position: center;
+  }
   .heroTitle {
     font-size: 2.2rem !important;
-  }
-  .heroSection {
-    padding: 120px 0 60px !important;
   }
 }
 
 @media (max-width: 480px) {
   .heroSection {
-    padding: 100px 0 40px !important;
+    height: 450px !important;
+    min-height: 450px !important;
+    padding: 100px 0 20px 0 !important;
   }
   .heroTitle {
-    font-size: 1.8rem !important;
+    font-size: 1.6rem !important;
+    margin-bottom: 12px;
+  }
+  .heroDesc {
+    font-size: 0.85rem;
+    margin-bottom: 24px;
+    max-width: 95%;
+  }
+  .heroActions {
+    flex-direction: column;
+    gap: 16px;
   }
 }

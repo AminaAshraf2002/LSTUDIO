@@ -44,7 +44,7 @@ const Services = () => {
           <div className={styles.heroLayout}>
             <div className={styles.heroTextContent}>
               <h1 className={styles.heroTitle}>
-                ELEVATE<br />YOUR<br />BEAUTY
+                ELEVATE<br />YOUR BEAUTY
               </h1>
               <p className={styles.heroDesc}>
                 Modern cosmetology and salon services for natural beauty and confidence.

@@ -2090,11 +2090,15 @@ body {
 }
 
 @media (max-width: 768px) {
+  .hero-section {
+    min-height: 600px;
+  }
   .hero-container {
     flex-direction: column;
     justify-content: flex-start;
     padding: 100px 20px 20px;
     align-items: flex-start;
+    min-height: 600px;
   }
   .hero-content {
     text-align: left;
