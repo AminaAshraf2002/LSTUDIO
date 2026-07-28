@@ -225,7 +225,7 @@ function HeroSection({ data }) {
           <div className="text-box">
             <h1 ref={titleRef} className="hero-title">{services[displayTextIndex]?.title}</h1>
             <p ref={subtitleRef} className="hero-subtitle">{services[displayTextIndex]?.subtitle}</p>
-            <button ref={buttonRef} className="know-more-btn" onClick={handleKnowMoreClick}>Know More</button>
+            <button ref={buttonRef} className="know-more-btn" id="hero-know-more-btn" onClick={handleKnowMoreClick}>Know More</button>
           </div>
         </div>
 

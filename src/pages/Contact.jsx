@@ -19,7 +19,7 @@ const Contact = () => {
                 Whether you are looking to book an appointment, inquire about our bespoke services, or discuss a collaboration, our concierge team is here to assist you.
               </p>
               <div className={styles.heroActions}>
-                <button className={styles.tourBtn}>
+                <button className={styles.tourBtn} id="contact-tour-btn">
                   <span className={styles.playIcon}><i className="fa-solid fa-phone"></i></span> Call Now
                 </button>
               </div>
@@ -61,7 +61,7 @@ const Contact = () => {
                   <label htmlFor="message">MESSAGE</label>
                   <textarea id="message" rows="5" placeholder="How can we help you?" required></textarea>
                 </div>
-                <button className={styles.submitBtn}>SEND INQUIRY &rarr;</button>
+                <button className={styles.submitBtn} id="contact-submit-btn">SEND INQUIRY &rarr;</button>
               </form>
             </div>
 

@@ -50,10 +50,10 @@ const Services = () => {
                 Modern cosmetology and salon services for natural beauty and confidence.
               </p>
               <div className={styles.heroActions}>
-                <Button to="/contact" variant="primary" className={styles.primaryBtn}>
+                <Button to="/contact" variant="primary" className={styles.primaryBtn} id="services-hero-book-btn">
                   Book Consultation &rarr;
                 </Button>
-                <button className={styles.tourBtn}>
+                <button className={styles.tourBtn} id="services-hero-tour-btn">
                   <span className={styles.playIcon}>&#9654;</span> Tour the clinic
                 </button>
               </div>
@@ -115,6 +115,7 @@ const Services = () => {
                 return (
                   <button 
                     key={filter} 
+                    id={`services-filter-btn-${filter.replace(/\s+/g, '-').toLowerCase()}`}
                     className={`${styles.filterBtn} ${activeFilter === filter ? styles.activeFilter : ''}`}
                     onClick={() => setActiveFilter(filter)}
                   >
@@ -147,7 +148,7 @@ const Services = () => {
                     <p>{service.desc}</p>
                     <div className={styles.cardFooter}>
                       <span className={styles.price}>{service.price}</span>
-                      <button className={styles.arrowBtn}>&rarr;</button>
+                      <button className={styles.arrowBtn} id={`services-card-arrow-btn-${service.id}`}>&rarr;</button>
                     </div>
                   </div>
                 </motion.div>
@@ -250,7 +251,7 @@ const Services = () => {
             <div className={styles.promoContent}>
               <h2>We give 10% on the first procedure</h2>
               <p>Care for your beauty starts here. Sign up and get a personal offer.</p>
-              <button className={styles.promoBtn}>Sign up with a discount &rarr;</button>
+              <button className={styles.promoBtn} id="services-promo-signup-btn">Sign up with a discount &rarr;</button>
             </div>
           </div>
         </div>

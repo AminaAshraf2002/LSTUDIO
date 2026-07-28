@@ -39,7 +39,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.15);
   z-index: 2;
 }
 
@@ -151,6 +151,14 @@ body {
   transition: none !important;
 }
 
+.card-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6));
+  z-index: 5;
+}
+
 
 .card-item img {
   display: block;
@@ -170,7 +178,7 @@ body {
   font-weight: 600;
   font-size: 22px;
   line-height: 1.2;
-  color: black;
+  color: white;
   font-family: 'Montserrat', sans-serif;
   pointer-events: none;
   z-index: 10;

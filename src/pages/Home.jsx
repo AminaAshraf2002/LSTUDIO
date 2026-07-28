@@ -96,16 +96,19 @@ const Home = () => {
 
       // Banner Parallax
       if (bannerImgRef.current) {
-        gsap.to(bannerImgRef.current, {
-          yPercent: 20,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: `.${styles.bannerSection}`,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: true,
+        gsap.fromTo(bannerImgRef.current,
+          { yPercent: -10 },
+          {
+            yPercent: 10,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: `.${styles.bannerSection}`,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: true,
+            }
           }
-        });
+        );
       }
 
       // 3. Mosaic Grid
@@ -293,7 +296,7 @@ const Home = () => {
               <p className={styles.ecoDesc}>
                 You dream about sleek, healthy looking hair that looks picture perfect, ready to rock on any occasion? We will make your dreams come true. Our expert stylists are dedicated to bringing out your natural beauty with precision and care. Step into our sanctuary and let us transform your everyday look into an absolute masterpiece.
               </p>
-              <button className={styles.ecoKnowMoreBtn}>READ MORE</button>
+              <button className={styles.ecoKnowMoreBtn} id="home-eco-read-more-btn">READ MORE</button>
             </div>
           </div>
         </div>
@@ -376,7 +379,7 @@ const Home = () => {
             <p>
               We have a total of 4 branches, one of which <br /> is situated in Sobha City mall and boasts an <br /> impressive entrance space on the ground floor. <br /> Additionally, we have plans to open 2 more <br /> branches in the near future, located in Cochin <br /> and Calicut.
             </p>
-            <Button className={styles.bannerButton}>VIEW MORE</Button>
+            <Button className={styles.bannerButton} id="home-banner-view-more-btn">VIEW MORE</Button>
           </div>
         </div>
       </section>
@@ -400,7 +403,7 @@ const Home = () => {
                 <p>
                   Our expert stylists create bespoke looks tailored to your unique features and lifestyle.
                 </p>
-                <button>READ MORE</button>
+                <button id="home-hair-styling-read-more-btn">READ MORE</button>
               </div>
             </div>
             <div className={styles.replicaStandard}>
@@ -425,7 +428,7 @@ const Home = () => {
                 <p>
                   Flawless makeup application for your most important days, ensuring you look breathtaking.
                 </p>
-                <button>READ MORE</button>
+                <button id="home-makeup-read-more-btn">READ MORE</button>
               </div>
               <div className={styles.replicaFeaturedImg}>
                 <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&q=80&w=800" alt="Professional Makeup" />
@@ -444,7 +447,7 @@ const Home = () => {
                 <p>
                   A complete sanctuary for your mind and body, offering premium massages and skin treatments.
                 </p>
-                <button>READ MORE</button>
+                <button id="home-spa-read-more-btn">READ MORE</button>
               </div>
             </div>
             <div className={styles.replicaStandard}>
@@ -544,6 +547,7 @@ const Home = () => {
         >
           {/* Left Arrow */}
           <button 
+            id="home-boutique-prev-btn"
             className={`${styles.boutiqueSliderArrow} ${styles.boutiqueSliderArrowLeft} ${isBoutiqueHovered ? styles.visible : ''}`}
             onClick={scrollBoutiqueLeft}
           >
@@ -580,6 +584,7 @@ const Home = () => {
 
           {/* Right Arrow */}
           <button 
+            id="home-boutique-next-btn"
             className={`${styles.boutiqueSliderArrow} ${styles.boutiqueSliderArrowRight} ${isBoutiqueHovered ? styles.visible : ''}`}
             onClick={scrollBoutiqueRight}
           >
@@ -620,7 +625,7 @@ const Home = () => {
               
               <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=1000" alt="Map Location" />
               <div className={styles.mapOverlay}>
-                <Button variant="filled">VIEW INTERACTIVE MAP</Button>
+                <Button variant="filled" id="home-map-view-btn">VIEW INTERACTIVE MAP</Button>
               </div>
             </div>
           </div>

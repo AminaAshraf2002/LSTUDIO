@@ -119,7 +119,7 @@ const TestimonialSlider = () => {
         {/* Footer */}
         <div className={styles.footer}>
           <p>See how impactful content<br/>makes a difference?</p>
-          <button className={styles.ctaButton}>SCHEDULE A CALL</button>
+          <button className={styles.ctaButton} id="testimonial-schedule-call-btn">SCHEDULE A CALL</button>
         </div>
       </div>
     </section>

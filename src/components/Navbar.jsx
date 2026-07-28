@@ -69,9 +69,10 @@ const Navbar = () => {
           <div className={styles.icons}>
             {/* Additional icon buttons could go here based on the design (e.g., search, cart if needed, but not specified directly except in text "icon buttons") */}
           </div>
-          <Button to="/contact" variant="white" className={isScrolled ? styles.scrolledBtn : ''}>BOOK NOW</Button>
+          <Button to="/contact" variant="white" id="nav-book-now-btn" className={isScrolled ? styles.scrolledBtn : ''}>BOOK NOW</Button>
           
           <button 
+            id="nav-mobile-menu-btn"
             className={styles.mobileMenuBtn} 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
@@ -94,7 +95,7 @@ const Navbar = () => {
             </NavLink>
           ))}
           <div className={styles.mobileActions}>
-             <Button to="/contact" variant="filled" className={styles.mobileBookBtn}>BOOK NOW</Button>
+             <Button to="/contact" variant="filled" id="nav-mobile-book-now-btn" className={styles.mobileBookBtn}>BOOK NOW</Button>
           </div>
         </div>
       )}
