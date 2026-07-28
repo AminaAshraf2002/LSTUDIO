@@ -249,6 +249,8 @@ function HeroSection({ data }) {
               moveToPrevious();
             }
             touchStartX.current = null;
+            // Resume autoplay after a short delay so swiping doesn't immediately trigger another jump
+            setTimeout(() => setAutoPlayEnabled(true), 1000);
           }}
         >
           {cardPositions.map((cardData, idx) => (

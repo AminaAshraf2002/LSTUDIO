@@ -2091,14 +2091,14 @@ body {
 
 @media (max-width: 768px) {
   .hero-section {
-    min-height: 600px;
+    min-height: 700px;
   }
   .hero-container {
     flex-direction: column;
     justify-content: flex-start;
     padding: 100px 20px 20px;
     align-items: flex-start;
-    min-height: 600px;
+    min-height: 700px;
   }
   .hero-content {
     text-align: left;
@@ -2131,7 +2131,8 @@ body {
     display: flex;
     flex-direction: row;
     position: absolute;
-    bottom: 80px;
+    top: 320px;
+    bottom: auto;
     left: 20px;
     width: calc(100% - 40px);
     height: 220px;
