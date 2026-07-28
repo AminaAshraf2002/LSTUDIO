@@ -966,6 +966,7 @@
 .ecoHeaderSection {
   padding: 80px 0;
   background-color: #fcf6ea;
+  overflow: hidden;
 }
 
 .ecoHeaderGrid {
@@ -1017,7 +1018,7 @@
 .ecoBottomSection {
   padding: 60px 0 120px;
   background-color: rgb(34, 34, 34);
-
+  overflow: hidden;
 }
 
 .ecoBottomGrid {
@@ -1255,9 +1256,9 @@
   
   .replicaFeatured,
   .replicaFeaturedReverse {
-    position: relative;
     height: 200px;
     display: block;
+    background-color: #f7f6f5;
   }
   
   .replicaStandard {
@@ -1265,44 +1266,37 @@
   }
   
   .replicaFeaturedImg {
-    height: 100%;
-    width: 100%;
+    display: none;
   }
   
   .replicaFeaturedContent {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    position: static;
     width: 100%;
-    height: auto;
-    padding: 8px;
+    height: 100%;
+    padding: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-    color: white;
+    justify-content: center;
+    background: none;
   }
   
   .replicaFeaturedContent h4 {
-    font-size: 0.6rem;
-    margin-bottom: 4px;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
     letter-spacing: 0px;
-    color: white;
+    color: #000000;
   }
   
   .replicaFeaturedContent p {
-    font-size: 0.45rem;
-    margin-bottom: 6px;
-    line-height: 1.1;
-    color: #eeeeee;
+    display: none;
   }
   
   .replicaFeaturedContent button {
-    padding: 4px 8px;
-    font-size: 0.4rem;
+    padding: 6px 10px;
+    font-size: 0.55rem;
     letter-spacing: 0px;
     align-self: flex-start;
-    background-color: #c4a976;
+    background-color: #000000;
     color: white;
   }
   
@@ -1349,8 +1343,8 @@
   
   /* Eco Header Section Mobile - Replicate Desktop Layout */
   .ecoHeaderGrid {
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
   .ecoHeaderLeft h1 {
     font-size: 1.2rem;
@@ -1372,25 +1366,26 @@
     padding-bottom: 40px;
   }
   .ecoBottomGrid {
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
   .ecoImageContainer {
     height: 300px;
-    margin-top: -40px;
+    margin-top: 20px;
   }
   .ecoAccordionHeader {
     padding: 16px 0;
   }
   .ecoAccordionHeader h2 {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
   .ecoIconWrapper {
     width: 24px;
     height: 24px;
   }
   .ecoAccordionContent p {
-    font-size: 0.65rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
   }
   .ecoAccordionContent.ecoOpen {
     max-height: 800px;

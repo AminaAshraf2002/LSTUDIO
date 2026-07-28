@@ -21,6 +21,7 @@ body {
 .hero-section {
   position: relative;
   height: 100vh;
+  height: 100svh;
   width: 100%;
   overflow: hidden;
   isolation: isolate;
@@ -1424,7 +1425,7 @@ body {
     padding-top: 70px;
   }
   .hero-container {
-    height: calc(100vh - 70px);
+    height: calc(100svh - 70px);
     padding: 0 28px;
   }
   .hero-content {
@@ -1504,7 +1505,7 @@ body {
     padding-top: 70px;
   }
   .hero-container {
-    height: calc(100vh - 70px);
+    height: calc(100svh - 70px);
     padding: 0 25px;
   }
   .hero-content {
@@ -1582,7 +1583,7 @@ body {
     padding-top: 70px;
   }
   .hero-container {
-    height: calc(100vh - 70px);
+    height: calc(100svh - 70px);
     min-height: 500px;
     padding: 0 22px;
   }
@@ -1662,7 +1663,7 @@ body {
     padding-top: 70px;
   }
   .hero-container {
-    height: calc(100vh - 70px);
+    height: calc(100svh - 70px);
     min-height: 500px;
     padding: 0 20px;
   }
@@ -1742,7 +1743,7 @@ body {
     padding-top: 70px;
   }
   .hero-container {
-    height: calc(100vh - 70px);
+    height: calc(100svh - 70px);
     min-height: 500px;
     padding: 0 18px;
   }
@@ -1822,7 +1823,7 @@ body {
     padding-top: 70px;
   }
   .hero-container {
-    height: calc(100vh - 70px);
+    height: calc(100svh - 70px);
     min-height: 480px;
     padding: 0 15px;
   }
