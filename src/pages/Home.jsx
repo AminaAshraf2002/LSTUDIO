@@ -94,22 +94,7 @@ const Home = () => {
         });
       }
 
-      // Banner Parallax
-      if (bannerImgRef.current) {
-        gsap.fromTo(bannerImgRef.current,
-          { yPercent: -10 },
-          {
-            yPercent: 10,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: `.${styles.bannerSection}`,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: true,
-            }
-          }
-        );
-      }
+
 
       // 3. Mosaic Grid
       gsap.from(`.${styles.mosaicItem}`, {
@@ -245,34 +230,25 @@ const Home = () => {
       {/* 2. Mosaic Grid */}
       <section className={styles.mosaicSection}>
         <div className="container">
-          <div className={styles.mosaicGrid}>
-            <div className={styles.mosaicCol}>
-              <div className={`${styles.mosaicItem} ${styles.mosaicItemTall}`}>
-                <img src={store8} alt="Sobha City Mall" />
-                <div className={styles.mosaicOverlay}>
-                  <h3>SOBHA CITY MALL</h3>
-                  <p>LOCATION</p>
-                </div>
+          <div className={styles.newGrid}>
+            <div className={styles.largeImageContainer}>
+              <img src={store8} alt="Main Image" />
+              <div className={styles.mosaicOverlay}>
+                <h3>SOBHA CITY MALL</h3>
+                <p>LOCATION</p>
               </div>
-              <div className={`${styles.mosaicItem} ${styles.mosaicItemShort}`}>
-                <img src={store5} alt="L'OREAL" />
+            </div>
+            
+            <div className={styles.smallImagesContainer}>
+              <div className={styles.smallImageWrapper}>
+                <img src={store5} alt="Small Image 1" />
                 <div className={styles.mosaicOverlay}>
                   <h3>L'OREAL</h3>
                   <p>PRODUCT</p>
                 </div>
               </div>
-            </div>
-            
-            <div className={styles.mosaicCol}>
-              <div className={`${styles.mosaicItem} ${styles.mosaicItemShort}`}>
-                <img src={store6} alt="Services" />
-                <div className={styles.mosaicOverlay}>
-                  <h3>TOP CLASS</h3>
-                   <p>SERVICES</p>
-                </div>
-              </div>
-              <div className={`${styles.mosaicItem} ${styles.mosaicItemTall}`}>
-                <img src={store7} alt="Professionals" />
+              <div className={styles.smallImageWrapper}>
+                <img src={store7} alt="Small Image 2" />
                 <div className={styles.mosaicOverlay}>
                   <h3>PROFESSIONALS</h3>
                   <p>STAFF</p>
@@ -326,7 +302,7 @@ const Home = () => {
                 </div>
                 <div className={`${styles.ecoAccordionContent} ${openAccordion === 'artistry' ? styles.ecoOpen : ''}`}>
                   <div className={styles.ecoContentInner}>
-                    <img src="https://lstudiosalons.in/wp-content/uploads/2023/08/DFGS-300x300.jpg" alt="The Artistry" className={styles.ecoContentImage} />
+                    <img src={store6} alt="The Artistry" className={styles.ecoContentImage} />
                     <p>Our master stylists blend classic techniques with modern trends to craft bespoke looks. Every cut, color, and treatment is tailored exclusively to complement your unique features and lifestyle.</p>
                   </div>
                 </div>

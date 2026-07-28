@@ -167,48 +167,75 @@
   max-width: 300px;
 }
 
-/* Mosaic Section */
+/* Mosaic Section Redesign */
 .mosaicSection {
-  padding: 100px 0;
+  padding: 80px 0;
   background-color: #ffffff;
 }
 
-.mosaicGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-}
-
-.mosaicCol {
+.newGrid {
   display: flex;
-  flex-direction: column;
-  gap: 24px;
+  gap: 16px;
+  width: 100%;
 }
 
-.mosaicItemTall {
-  height: 500px;
-}
-
-.mosaicItemShort {
-  height: 280px;
-}
-
-.mosaicItem {
+.largeImageContainer {
   position: relative;
+  flex: 1;
+  border-radius: 20px;
   overflow: hidden;
-  cursor: pointer;
-  border-radius: 4px;
+  height: 600px;
 }
 
-.mosaicItem img {
+.largeImageContainer img,
+.smallImageWrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  display: block;
 }
 
-.mosaicItem:hover img {
+.smallImagesContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 600px;
+}
+
+.smallImageWrapper {
+  flex: 1;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.discoverBtn {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: white;
+  color: black;
+  border: none;
+  padding: 12px 24px;
+  font-weight: 700;
+  font-family: var(--font-sans);
+  border-radius: 8px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.discoverBtn:hover {
+  transform: translateY(-2px);
+}
+
+.largeImageContainer:hover img,
+.smallImageWrapper:hover img {
   transform: scale(1.1);
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .mosaicOverlay {
@@ -226,9 +253,11 @@
   justify-content: center;
   align-items: center;
   transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
 }
 
-.mosaicItem:hover .mosaicOverlay {
+.largeImageContainer:hover .mosaicOverlay,
+.smallImageWrapper:hover .mosaicOverlay {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.525);
@@ -242,12 +271,66 @@
   color: #ffffff;
   margin: 0 0 8px 0;
   transition: font-size 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    font-weight: 600;
-
+  font-weight: 600;
 }
 
-.mosaicItem:hover .mosaicOverlay h3 {
-  font-size: 1.8rem;
+.largeImageContainer:hover .mosaicOverlay h3 {
+  font-size: 1.6rem;
+}
+
+.smallImageWrapper:hover .mosaicOverlay h3 {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .newGrid {
+    flex-direction: column;
+  }
+  
+  .largeImageContainer {
+    height: 400px;
+  }
+  
+  .smallImagesContainer {
+    flex-direction: row;
+    height: 250px;
+  }
+  
+  .discoverBtn {
+    padding: 8px 16px;
+    font-size: 12px;
+    bottom: 12px;
+    left: 12px;
+  }
+  
+  .mosaicOverlay {
+    min-width: 100%;
+    min-height: 100%;
+    width: 100%;
+    height: 100%;
+  }
+
+  .largeImageContainer .mosaicOverlay h3 {
+    font-size: 1.2rem;
+  }
+  
+  .smallImageWrapper .mosaicOverlay h3 {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+  }
+  
+  .mosaicOverlay p {
+    font-size: 0.55rem;
+    letter-spacing: 2px;
+  }
+  
+  .largeImageContainer:hover .mosaicOverlay h3 {
+    font-size: 1.3rem;
+  }
+  
+  .smallImageWrapper:hover .mosaicOverlay h3 {
+    font-size: 0.8rem;
+  }
 }
 
 .mosaicOverlay p {
@@ -1048,9 +1131,7 @@
   
   .legacyGrid,
   .signatureGrid,
-  .visitGrid,
-  .ecoHeaderGrid,
-  .ecoBottomGrid {
+  .visitGrid {
     grid-template-columns: 1fr;
   }
   
@@ -1067,10 +1148,6 @@
   }
   .ecoImageContainer {
     height: 400px;
-  }
-  .ecoContentInner {
-    flex-direction: column;
-    align-items: flex-start;
   }
   
   .cardsGrid {
@@ -1128,44 +1205,115 @@
     gap: 32px;
   }
   
-  /* Banner Section Mobile */
+  /* Banner Section Mobile - Replicate Desktop Layout */
   .bannerSection {
-    padding: 60px 20px;
+    padding: 80px 0;
     height: auto;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .bannerBackground {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+  .bannerBackground img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 70% center; /* Adjust focus if needed */
   }
   .bannerContent {
-    max-width: 100%;
-    margin-left: 0;
-    padding: 0 16px;
-    text-align: center;
+    max-width: 85%;
+    margin-left: 30px;
+    padding: 0;
+    text-align: left;
   }
   .bannerContent h2 {
-    font-size: 32px;
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
+  .bannerContent p {
+    font-size: 0.8rem;
+    margin-bottom: 20px;
   }
   
-  /* Hair & Beauty Services (Replica Grid) Mobile */
+  /* Hair & Beauty Services (Replica Grid) Mobile - 3 Cards Layout */
+  .replicaSection {
+    padding: 40px 0;
+  }
   .replicaGrid,
   .replicaGridReverse,
   .replicaGridLast {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 30px;
   }
   
   .replicaFeatured,
   .replicaFeaturedReverse {
-    flex-direction: column;
-    height: auto;
-  }
-  
-  .replicaFeaturedImg {
-    height: 300px;
-  }
-  
-  .replicaFeaturedContent {
-    padding: 30px 20px;
+    position: relative;
+    height: 200px;
+    display: block;
   }
   
   .replicaStandard {
-    height: 300px;
+    height: 200px;
+  }
+  
+  .replicaFeaturedImg {
+    height: 100%;
+    width: 100%;
+  }
+  
+  .replicaFeaturedContent {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: white;
+  }
+  
+  .replicaFeaturedContent h4 {
+    font-size: 0.6rem;
+    margin-bottom: 4px;
+    letter-spacing: 0px;
+    color: white;
+  }
+  
+  .replicaFeaturedContent p {
+    font-size: 0.45rem;
+    margin-bottom: 6px;
+    line-height: 1.1;
+    color: #eeeeee;
+  }
+  
+  .replicaFeaturedContent button {
+    padding: 4px 8px;
+    font-size: 0.4rem;
+    letter-spacing: 0px;
+    align-self: flex-start;
+    background-color: #c4a976;
+    color: white;
+  }
+  
+  .replicaHeader h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .replicaHeader p {
+    font-size: 0.85rem;
+    padding: 0 10px;
   }
   
   /* Exclusive Haircare (Boutique & Signature) Mobile */
@@ -1197,5 +1345,104 @@
   
   .boutiqueSliderArrow {
     display: none !important; /* Hide arrows on mobile, users can swipe */
+  }
+  
+  /* Eco Header Section Mobile - Replicate Desktop Layout */
+  .ecoHeaderGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .ecoHeaderLeft h1 {
+    font-size: 1.2rem;
+  }
+  .ecoHighlight {
+    font-size: 1.4rem;
+  }
+  .ecoHeaderRight p {
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  .ecoKnowMoreBtn {
+    padding: 10px 18px;
+    font-size: 0.75rem;
+  }
+  
+  .ecoBottomSection {
+    padding-bottom: 40px;
+  }
+  .ecoBottomGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .ecoImageContainer {
+    height: 300px;
+    margin-top: -40px;
+  }
+  .ecoAccordionHeader {
+    padding: 16px 0;
+  }
+  .ecoAccordionHeader h2 {
+    font-size: 1rem;
+  }
+  .ecoIconWrapper {
+    width: 24px;
+    height: 24px;
+  }
+  .ecoAccordionContent p {
+    font-size: 0.65rem;
+  }
+  .ecoAccordionContent.ecoOpen {
+    max-height: 800px;
+  }
+  .ecoContentInner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .ecoContentImage {
+    width: 80px;
+    height: 80px;
+  }
+  
+  /* Signature Section Mobile - Replicate Desktop Layout */
+  .signatureSection {
+    padding: 40px 0;
+  }
+  .signatureGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .signatureList h2 {
+    font-size: 1.2rem;
+    margin-bottom: 24px;
+  }
+  .signatureList h2 span {
+    font-size: 0.8rem;
+  }
+  .signatureImage {
+    height: 300px;
+  }
+  .priceName {
+    font-size: 0.65rem;
+  }
+  .priceValue {
+    font-size: 0.65rem;
+  }
+  .priceItems {
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .downloadLink {
+    font-size: 0.5rem;
+    letter-spacing: 1px;
+  }
+  .imageBadge {
+    padding: 8px;
+    top: 16px;
+    right: 16px;
+  }
+  .imageBadge span {
+    font-size: 0.8rem;
   }
 }

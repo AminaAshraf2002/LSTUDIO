@@ -91,31 +91,17 @@
 /* Responsive */
 @media (max-width: 768px) {
   .bannerGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   .bannerItem {
-    height: 60vh;
+    height: auto;
+    aspect-ratio: auto;
   }
-
-  .bannerContent {
-    bottom: 2rem;
-    left: 2rem;
-  }
-
-  .bannerTitle {
-    font-size: clamp(2rem, 5vw, 3rem);
-    margin-bottom: 1rem;
-  }
-
-  .bannerLink {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .bannerItem {
-    height: 50vh;
+  
+  .bannerItem img {
+    height: auto;
+    object-fit: contain;
   }
 
   .bannerContent {
@@ -124,6 +110,41 @@
   }
 
   .bannerTitle {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin-bottom: 0.5rem;
+  }
+
+  .bannerLink {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .bannerGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .bannerItem {
+    height: auto;
+    aspect-ratio: auto;
+  }
+  
+  .bannerItem img {
+    height: auto;
+    object-fit: contain;
+  }
+
+  .bannerContent {
+    bottom: 1rem;
+    left: 1rem;
+  }
+
+  .bannerTitle {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .bannerLink {
+    font-size: 0.6rem;
   }
 }

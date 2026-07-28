@@ -21,6 +21,7 @@ function HeroSection({ data }) {
   const subtitleRef = useRef(null);
   const buttonRef = useRef(null);
   const cardsContainerRef = useRef(null);
+  const touchStartX = useRef(null);
 
   useEffect(() => {
     if (data && data.slides) {
@@ -80,7 +81,7 @@ function HeroSection({ data }) {
     if (w >= 1024) return 135;
     if (w >= 900) return 123;
     if (w >= 834) return 118;
-    if (w >= 768) return 113;
+    if (w <= 768) return 165;
     if (w >= 640) return 180;
     if (w >= 576) return 160;
     if (w >= 480) return 150;
@@ -148,28 +149,30 @@ function HeroSection({ data }) {
     const allCards = cardsContainerRef.current.querySelectorAll('.card-item');
     allCards.forEach((card) => {
       const currentPos = parseInt(card.getAttribute('data-position'));
-      let targetY, targetOpacity = 1;
+      let targetPos, targetOpacity = 1;
 
       if (direction === 'next') {
         if (currentPos === 0) {
-          targetY = currentStep * (services.length - 1);
+          targetPos = currentStep * (services.length - 1);
           targetOpacity = 1;
         } else {
-          targetY = currentStep * (currentPos - 1);
+          targetPos = currentStep * (currentPos - 1);
         }
       } else {
         if (currentPos === services.length - 1) {
-          targetY = 0;
+          targetPos = 0;
         } else if (currentPos === services.length - 2) {
-          targetY = currentStep * (services.length - 1);
+          targetPos = currentStep * (services.length - 1);
           targetOpacity = 1;
         } else {
-          targetY = currentStep * (currentPos + 1);
+          targetPos = currentStep * (currentPos + 1);
         }
       }
 
       masterTL.to(card, {
-        y: targetY, opacity: targetOpacity, duration: isMobile ? 0.6 : 0.8, ease: "power3.inOut", force3D: true
+        [isMobile ? 'x' : 'y']: targetPos, 
+        [isMobile ? 'y' : 'x']: 0,
+        opacity: targetOpacity, duration: isMobile ? 0.6 : 0.8, ease: "power3.inOut", force3D: true
       }, 0);
     });
 
@@ -205,7 +208,7 @@ function HeroSection({ data }) {
 
   useEffect(() => {
     if (!autoPlayEnabled || services.length === 0) return;
-    const timer = setInterval(moveToNext, 5000);
+    const timer = setInterval(moveToNext, 4000);
     return () => clearInterval(timer);
   }, [autoPlayEnabled, moveToNext, services]);
 
@@ -229,7 +232,25 @@ function HeroSection({ data }) {
           </div>
         </div>
 
-        <div ref={cardsContainerRef} className="cards-stack-container">
+        <div 
+          ref={cardsContainerRef} 
+          className="cards-stack-container"
+          onTouchStart={(e) => {
+            touchStartX.current = e.touches[0].clientX;
+            setAutoPlayEnabled(false);
+          }}
+          onTouchEnd={(e) => {
+            if (!touchStartX.current) return;
+            const touchEndX = e.changedTouches[0].clientX;
+            const diff = touchStartX.current - touchEndX;
+            if (diff > 50) {
+              moveToNext();
+            } else if (diff < -50) {
+              moveToPrevious();
+            }
+            touchStartX.current = null;
+          }}
+        >
           {cardPositions.map((cardData, idx) => (
             <div key={idx} className="card-item" data-position={cardData.position}>
               <img

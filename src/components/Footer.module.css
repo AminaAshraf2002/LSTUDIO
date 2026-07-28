@@ -203,7 +203,17 @@
 
 @media (max-width: 576px) {
   .footerGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px 15px;
+  }
+
+  .brandCol,
+  .contactCol {
+    grid-column: 1 / -1;
+  }
+
+  .linksCol {
+    grid-column: span 1;
   }
 
   .bottomBar {
