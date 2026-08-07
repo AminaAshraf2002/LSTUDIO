@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Priestacy';
+  src: url('./assets/Priestacy.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   /* Color Palette */
   --bg-primary: #0D0D0D;

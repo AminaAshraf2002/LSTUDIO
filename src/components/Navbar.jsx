@@ -46,7 +46,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`${styles.navbar} ${(isScrolled || !isHomePage) ? styles.scrolled : ''} ${isHidden ? styles.hidden : ''}`}>
+    <nav className={`${styles.navbar} ${isScrolled ? styles.scrolled : ''} ${isHidden ? styles.hidden : ''}`}>
       <div className={styles.container}>
         <div className={styles.logo}>
           <NavLink to="/">

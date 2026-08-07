@@ -1,0 +1,320 @@
+:root {
+  --lumora-cream: #f5eee1;
+  --lumora-cream-dim: rgba(245, 238, 225, 0.78);
+  --lumora-cream-faint: rgba(245, 238, 225, 0.55);
+  --lumora-bg: #221c17; /* Moody dark brown/black */
+  --font-serif-display: 'Cormorant Garamond', 'Canela', 'Georgia', serif;
+  --font-sans: 'Jost', sans-serif;
+}
+
+.lumora-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  color: var(--lumora-cream);
+  font-family: var(--font-serif-display);
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+.lumora-menu-wrapper {
+  background-color: var(--lumora-bg);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* Action bar */
+.lumora-action-bar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: rgba(34, 28, 23, 0.85);
+  backdrop-filter: blur(6px);
+}
+
+.lumora-back-btn,
+.lumora-download-btn {
+  font-family: var(--font-serif-display);
+  font-size: 1.2rem;
+  letter-spacing: 0.04em;
+  padding: 0.55rem 1.25rem;
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.lumora-back-btn {
+  background: transparent;
+  color: var(--lumora-cream);
+  border: 1px solid var(--lumora-cream-faint);
+}
+
+.lumora-back-btn:hover {
+  border-color: var(--lumora-cream);
+}
+
+.lumora-download-btn {
+  background: var(--lumora-cream);
+  color: var(--lumora-bg);
+  border: none;
+  font-weight: 500;
+}
+
+.lumora-download-btn:hover {
+  background: #fff;
+}
+
+/* Base Page Setup */
+.lumora-page, .lumora-cover {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* Brand cover page */
+.lumora-cover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: var(--lumora-bg);
+}
+
+.lumora-cover-logo {
+  max-width: 300px;
+  width: 80%;
+  height: auto;
+  margin-bottom: 1rem;
+  filter: invert(1) brightness(2) sepia(1) hue-rotate(330deg) saturate(3);
+}
+
+.lumora-cover p {
+  font-family: var(--font-serif-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  letter-spacing: 0.15em;
+  color: var(--lumora-cream-dim);
+  margin: 0.75rem 0 0;
+  text-transform: uppercase;
+}
+
+/* Category Cover Page */
+.lumora-category-cover {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: flex-end;
+  padding: 4rem;
+}
+
+.lumora-category-cover-title h2 {
+  font-family: var(--font-serif-display);
+  font-weight: 300;
+  font-size: clamp(3rem, 7vw, 6rem);
+  color: var(--lumora-cream);
+  margin: 0;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Pricing Page */
+.lumora-pricing-page {
+  background-color: var(--lumora-bg);
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.lumora-pricing-container {
+  width: 100%;
+  max-width: 800px;
+}
+
+.lumora-pricing-title {
+  font-family: var(--font-serif-display);
+  font-weight: 300;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  color: var(--lumora-cream-dim);
+  margin: 0 0 4rem 0;
+}
+
+.lumora-price-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.lumora-price-row-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 2rem;
+  width: 100%;
+}
+
+.lumora-price-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.lumora-item-desc {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 0.95rem;
+  color: var(--lumora-cream-faint);
+  line-height: 1.5;
+  padding-right: 20%;
+}
+
+.lumora-item-name,
+.lumora-item-price {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 1.25rem;
+  color: var(--lumora-cream);
+  letter-spacing: 0.05em;
+}
+
+.lumora-item-note {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--lumora-cream-faint);
+  margin-right: 0.25rem;
+}
+
+/* Back Cover */
+.lumora-back-cover {
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 8rem 6rem;
+  background-color: var(--lumora-cream);
+  text-align: left;
+}
+
+.lumora-back-content {
+  text-align: left;
+  width: 100%;
+  max-width: 600px;
+}
+
+.lumora-back-logo {
+  max-width: 250px;
+  margin-bottom: 3rem;
+}
+
+.lumora-back-content p {
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  color: #221c17;
+  margin: 0.5rem 0;
+  text-transform: none;
+}
+
+.lumora-back-content p:first-of-type {
+  font-family: var(--font-serif-display);
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  color: #555;
+  margin-bottom: 2.5rem;
+  text-transform: uppercase;
+}
+
+.lumora-qr-container {
+  position: absolute;
+  bottom: 8rem;
+  right: 6rem;
+}
+
+.lumora-qr {
+  width: 100px;
+  height: 100px;
+  mix-blend-mode: multiply;
+}
+
+/* Print / A4 download */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0mm;
+  }
+
+  html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: var(--lumora-bg);
+  }
+
+  .hide-on-print {
+    display: none !important;
+  }
+
+  .lumora-menu-wrapper {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .lumora-page, .lumora-cover {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-inside: avoid;
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .lumora-pricing-page {
+    justify-content: center;
+    padding: 10%;
+  }
+
+  .lumora-back-cover {
+    page-break-after: auto;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .lumora-action-bar {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .lumora-back-btn,
+  .lumora-download-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .lumora-category-cover {
+    padding: 2rem;
+  }
+
+  .lumora-pricing-page {
+    padding: 2rem;
+  }
+  
+  .lumora-back-cover {
+    padding: 3rem 2rem;
+  }
+}

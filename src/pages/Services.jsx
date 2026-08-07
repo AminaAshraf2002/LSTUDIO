@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Services.module.css';
 import Button from '../components/Button';
 import storeImg from '../assets/store.webp';
@@ -53,9 +54,11 @@ const Services = () => {
                 <Button to="/contact" variant="primary" className={styles.primaryBtn} id="services-hero-book-btn">
                   Book Consultation &rarr;
                 </Button>
-                <button className={styles.tourBtn} id="services-hero-tour-btn">
-                  <span className={styles.playIcon}>&#9654;</span> Tour the clinic
-                </button>
+                <Link to="/menu" style={{textDecoration: 'none'}}>
+                  <button className={styles.tourBtn} id="services-hero-menu-btn">
+                    <span className={styles.playIcon}>&#9776;</span> View Service Menu
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -250,8 +253,8 @@ const Services = () => {
           <div className={styles.promoBanner}>
             <div className={styles.promoContent}>
               <h2>We give 10% on the first procedure</h2>
-              <p>Care for your beauty starts here. Sign up and get a personal offer.</p>
-              <button className={styles.promoBtn} id="services-promo-signup-btn">Sign up with a discount &rarr;</button>
+              <p>Care for your beauty starts here.</p>
+<button className={styles.promoBtn} id="services-promo-signup-btn">Contact Us &rarr;</button>
             </div>
           </div>
         </div>

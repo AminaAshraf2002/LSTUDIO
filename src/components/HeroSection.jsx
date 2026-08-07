@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './HeroSection.css';
@@ -67,28 +68,9 @@ function HeroSection({ data }) {
 
   const getCardStep = () => {
     const w = window.innerWidth;
-    if (w >= 5120) return 360;
-    if (w >= 4480) return 315;
-    if (w >= 3456) return 275;
-    if (w >= 3024) return 250;
-    if (w >= 2880) return 240;
-    if (w >= 2560) return 225;
-    if (w >= 1920) return 205;
-    if (w >= 1728) return 175;
-    if (w >= 1536) return 168;
-    if (w >= 1440) return 163;
-    if (w >= 1280) return 155;
-    if (w >= 1024) return 135;
-    if (w >= 900) return 123;
-    if (w >= 834) return 118;
+    if (w > 992) return 170; // 160px width + 10px gap
     if (w <= 768) return 165;
-    if (w >= 640) return 180;
-    if (w >= 576) return 160;
-    if (w >= 480) return 150;
-    if (w >= 428) return 140;
-    if (w >= 375) return 135;
-    if (w >= 320) return 112;
-    return 100;
+    return 330;
   };
 
   const animateCardExpansion = useCallback((direction) => {
@@ -170,8 +152,8 @@ function HeroSection({ data }) {
       }
 
       masterTL.to(card, {
-        [isMobile ? 'x' : 'y']: targetPos, 
-        [isMobile ? 'y' : 'x']: 0,
+        x: targetPos, 
+        y: 0,
         opacity: targetOpacity, duration: isMobile ? 0.6 : 0.8, ease: "power3.inOut", force3D: true
       }, 0);
     });
@@ -228,7 +210,14 @@ function HeroSection({ data }) {
           <div className="text-box">
             <h1 ref={titleRef} className="hero-title">{services[displayTextIndex]?.title}</h1>
             <p ref={subtitleRef} className="hero-subtitle">{services[displayTextIndex]?.subtitle}</p>
-            <button ref={buttonRef} className="know-more-btn" id="hero-know-more-btn" onClick={handleKnowMoreClick}>Know More</button>
+            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+              <button ref={buttonRef} className="know-more-btn" id="hero-know-more-btn" onClick={handleKnowMoreClick}>Know More</button>
+              <Link to="/menu" style={{textDecoration: 'none'}}>
+                <button className="know-more-btn" id="hero-view-menu-btn" style={{ background: 'transparent', border: '1px solid #c9a15f', color: '#c9a15f' }}>
+                  View Service Menu
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -272,14 +261,14 @@ function HeroSection({ data }) {
           onClick={() => { setAutoPlayEnabled(false); moveToPrevious(); }}
           onTouchStart={(e) => { e.preventDefault(); setAutoPlayEnabled(false); moveToPrevious(); }}
         >
-          <ChevronUp size={20} />
+          <ChevronLeft size={20} />
         </div>
         <div
           className="arrow"
           onClick={() => { setAutoPlayEnabled(false); moveToNext(); }}
           onTouchStart={(e) => { e.preventDefault(); setAutoPlayEnabled(false); moveToNext(); }}
         >
-          <ChevronDown size={20} />
+          <ChevronRight size={20} />
         </div>
       </div>
     </section>

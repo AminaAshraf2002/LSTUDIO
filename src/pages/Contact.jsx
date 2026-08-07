@@ -1,9 +1,38 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import styles from './Contact.module.css';
 import Button from '../components/Button';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
+  const form = useRef();
+  const [status, setStatus] = useState('');
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setStatus('Sending...');
+
+    emailjs
+      .sendForm(
+        'service_85xlu3e',
+        'template_ldqbstf',
+        form.current,
+        {
+          publicKey: 'Fh3AOsVsxM84Phhxo'
+        }
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          setStatus('Message sent successfully!');
+          e.target.reset();
+        },
+        (error) => {
+          console.log(error.text);
+          setStatus('Failed to send message. Please try again.');
+        }
+      );
+  };
   return (
     <div className={styles.contactPage}>
       
@@ -19,9 +48,11 @@ const Contact = () => {
                 Whether you are looking to book an appointment, inquire about our bespoke services, or discuss a collaboration, our concierge team is here to assist you.
               </p>
               <div className={styles.heroActions}>
-                <button className={styles.tourBtn} id="contact-tour-btn">
-                  <span className={styles.playIcon}><i className="fa-solid fa-phone"></i></span> Call Now
-                </button>
+                <a href="tel:+919400333894" style={{textDecoration: 'none'}}>
+                  <button className={styles.tourBtn} id="contact-tour-btn">
+                    <span className={styles.playIcon}><i className="fa-solid fa-phone"></i></span> Call Now
+                  </button>
+                </a>
               </div>
             </div>
           </div>
@@ -36,32 +67,33 @@ const Contact = () => {
             {/* Form Side */}
             <div className={styles.formContainer}>
               <h3 className={styles.sectionTitle}>Send a Message</h3>
-              <form className={styles.contactForm}>
+              <form className={styles.contactForm} ref={form} onSubmit={sendEmail}>
                 <div className={styles.inputRow}>
                   <div className={styles.inputGroup}>
                     <label htmlFor="name">FULL NAME</label>
-                    <input type="text" id="name" placeholder="Jane Doe" required />
+                    <input type="text" id="name" name="full_name" placeholder="Jane Doe" required />
                   </div>
                   <div className={styles.inputGroup}>
                     <label htmlFor="email">EMAIL ADDRESS</label>
-                    <input type="email" id="email" placeholder="jane@example.com" required />
+                    <input type="email" id="email" name="email" placeholder="jane@example.com" required />
                   </div>
                 </div>
                 <div className={styles.inputGroup}>
                   <label htmlFor="service">SERVICE OF INTEREST</label>
-                  <select id="service">
-                    <option>Hair Artistry</option>
-                    <option>Skin Therapy</option>
-                    <option>Makeup Design</option>
-                    <option>Bridal Consultation</option>
-                    <option>Other</option>
+                  <select id="service" name="service">
+                    <option value="Hair Artistry">Hair Artistry</option>
+                    <option value="Skin Therapy">Skin Therapy</option>
+                    <option value="Makeup Design">Makeup Design</option>
+                    <option value="Bridal Consultation">Bridal Consultation</option>
+                    <option value="Other">Other</option>
                   </select>
                 </div>
                 <div className={styles.inputGroup}>
                   <label htmlFor="message">MESSAGE</label>
-                  <textarea id="message" rows="5" placeholder="How can we help you?" required></textarea>
+                  <textarea id="message" name="message" rows="5" placeholder="How can we help you?" required></textarea>
                 </div>
-                <button className={styles.submitBtn} id="contact-submit-btn">SEND INQUIRY &rarr;</button>
+                <button type="submit" className={styles.submitBtn} id="contact-submit-btn">SEND INQUIRY &rarr;</button>
+                {status && <p style={{ marginTop: '15px', color: '#c9a15f', fontSize: '14px', fontWeight: '500' }}>{status}</p>}
               </form>
             </div>
 
@@ -98,7 +130,9 @@ const Contact = () => {
 
               <div className={styles.infoBlock}>
                 <h3 className={styles.sectionTitle}>General Inquiries</h3>
-                <a href="mailto:info@lstudio.com" className={styles.emailLink}>info@lstudio.com</a>
+                <p style={{ marginBottom: '10px' }}><a href="tel:+919400333894" className={styles.emailLink}>+91 9400333894</a></p>
+                <p style={{ marginBottom: '10px' }}><a href="tel:+919995383895" className={styles.emailLink}>+91 9995383895</a></p>
+                <a href="mailto:lstudio.ef@gmail.com" className={styles.emailLink}>lstudio.ef@gmail.com</a>
               </div>
 
               <div className={styles.infoBlock}>

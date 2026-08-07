@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Home.module.css';
 import Button from '../components/Button';
 import SectionHeading from '../components/SectionHeading';
@@ -8,15 +9,15 @@ import { Search, MapPin, Phone, ArrowLeft, ArrowRight, Quote, Plus, Minus } from
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import store from '../assets/bridal.png';
-import store1 from '../assets/hair.png';
-import store3 from '../assets/haidra.png';
+import store from '../assets/beauty.png';
+import store1 from '../assets/crafted.png';
+import store3 from '../assets/premium.png';
 import store4 from '../assets/store6.webp';
 import store5 from '../assets/loriel.webp';
 import store6 from '../assets/nail.webp';
 import store7 from '../assets/store3.webp';
 import store8 from '../assets/store.webp';
-import bannerImg from '../assets/banner.png';
+import bannerImg from '../assets/banner2.png';
 import signatureImg from '../assets/unnamed.webp';
 import vitaminoImg from '../assets/Vitamino.jpg';
 import loriel1Img from '../assets/Loriel1.webp';
@@ -24,7 +25,9 @@ import lissImg from '../assets/Liss.jpg';
 import oiImg from '../assets/oi.webp';
 import loveImg from '../assets/love.jpg';
 import oialliImg from '../assets/oialli.webp';
-
+import spaImg from '../assets/spa.png';
+import bridal2Img from '../assets/bridal2.png';
+import hairstylingImg from '../assets/hairstyling.png';
 import TestimonialSlider from '../components/TestimonialSlider';
 import BannerSection from '../components/BannerSection';
 import AOS from 'aos';
@@ -59,6 +62,7 @@ const heroData = {
 };
 
 const Home = () => {
+  const navigate = useNavigate();
   const containerRef = useRef(null);
   const parallaxImgRef = useRef(null);
   const bannerImgRef = useRef(null);
@@ -124,44 +128,7 @@ const Home = () => {
         y: 40, opacity: 0, duration: 0.8, ease: "power3.out"
       });
 
-      // 7. Hair & Beauty Services - Row 1
-      const row1 = gsap.utils.toArray(`.${styles.replicaGrid}`)[0];
-      if (row1) {
-        gsap.from(row1.querySelector(`.${styles.replicaFeatured}`), {
-          scrollTrigger: { trigger: row1, start: "top 80%", toggleActions: "play none none none" },
-          x: -50, opacity: 0, duration: 0.8, ease: "power3.out"
-        });
-        gsap.from(row1.querySelectorAll(`.${styles.replicaStandard}`), {
-          scrollTrigger: { trigger: row1, start: "top 80%", toggleActions: "play none none none" },
-          y: 50, opacity: 0, duration: 0.8, stagger: 0.15, ease: "power3.out"
-        });
-      }
 
-      // 7. Hair & Beauty Services - Row 2
-      const row2 = gsap.utils.toArray(`.${styles.replicaGridReverse}`)[0];
-      if (row2) {
-        gsap.from(row2.querySelector(`.${styles.replicaFeatured}`), {
-          scrollTrigger: { trigger: row2, start: "top 80%", toggleActions: "play none none none" },
-          x: 50, opacity: 0, duration: 0.8, ease: "power3.out"
-        });
-        gsap.from(row2.querySelectorAll(`.${styles.replicaStandard}`), {
-          scrollTrigger: { trigger: row2, start: "top 80%", toggleActions: "play none none none" },
-          y: 50, opacity: 0, duration: 0.8, stagger: 0.15, ease: "power3.out"
-        });
-      }
-
-      // 7. Hair & Beauty Services - Row 3
-      const row3 = gsap.utils.toArray(`.${styles.replicaGridLast}`)[0];
-      if (row3) {
-        gsap.from(row3.querySelector(`.${styles.replicaFeatured}`), {
-          scrollTrigger: { trigger: row3, start: "top 80%", toggleActions: "play none none none" },
-          x: -50, scale: 0.9, opacity: 0, duration: 0.8, ease: "power3.out"
-        });
-        gsap.from(row3.querySelectorAll(`.${styles.replicaStandard}`), {
-          scrollTrigger: { trigger: row3, start: "top 80%", toggleActions: "play none none none" },
-          y: 50, opacity: 0, duration: 0.8, stagger: 0.15, ease: "power3.out"
-        });
-      }
 
       // 8. Signature Selection Pricing
       gsap.from(`.${styles.signatureImage}`, {
@@ -172,6 +139,7 @@ const Home = () => {
         scrollTrigger: { trigger: `.${styles.signatureSection}`, start: "top 75%", toggleActions: "play none none none" },
         x: 50, opacity: 0, duration: 1, ease: "power3.out"
       });
+
 
       // 9. Curated Boutique
       gsap.from(`.${styles.boutiqueTitleWrapper}`, {
@@ -185,9 +153,7 @@ const Home = () => {
       gsap.from(`.${styles.boutiqueProductCard}`, {
         scrollTrigger: { trigger: `.${styles.boutiqueSection}`, start: "top 80%", toggleActions: "play none none none" },
         scale: 0.85, opacity: 0, duration: 0.8, stagger: 0.12, ease: "back.out(1.5)"
-      });
-
-      // 10. Testimonial Slider Layered Reveal
+      });      // 10. Testimonial Slider Layered Reveal
       if (testimonialWrapperRef.current) {
         gsap.from(testimonialWrapperRef.current, {
           scrollTrigger: { trigger: testimonialWrapperRef.current, start: "top 80%", toggleActions: "play none none none" },
@@ -227,6 +193,29 @@ const Home = () => {
     <div className={styles.home} ref={containerRef}>
       {/* 1. Full-bleed GSAP Hero */}
       <HeroSection data={heroData} />
+
+
+        {/* 3. New About Section */}
+      <section className={styles.newAboutSection}>
+        <div className="container">
+          <div className={styles.newAboutGrid}>
+            <div className={styles.newAboutTextCol}>
+              <h4 className={styles.newAboutSubtitle}>L STUDIO • SINCE 2012</h4>
+              <h2 className={styles.newAboutTitle}>
+                READY TO IMPRESS
+              </h2>
+              <div className={styles.newAboutDesc}>
+                <p>You dream about sleek, healthy looking hair that looks picture perfect, ready to rock on any occasion? We will make your dreams come true.</p>
+                <p>Our expert stylists are dedicated to bringing out your natural beauty with precision and care. Step into our sanctuary and let us transform your everyday look into an absolute masterpiece.</p>
+              </div>
+              <button className={styles.newAboutBtn} id="home-eco-read-more-btn" onClick={() => navigate('/about')}>READ MORE</button>
+            </div>
+            <div className={styles.newAboutImageCol}>
+              <img src={store4} alt="L Studio Interior" className={styles.newAboutImage} />
+            </div>
+          </div>
+        </div>
+      </section>
       {/* 2. Mosaic Grid */}
       <section className={styles.mosaicSection}>
         <div className="container">
@@ -259,239 +248,210 @@ const Home = () => {
         </div>
       </section>
       
-      {/* 3. EcoGlow Style About Section */}
-      <section className={styles.ecoHeaderSection}>
-        <div className="container">
-          <div className={styles.ecoHeaderGrid}>
-            <div className={styles.ecoHeaderLeft}>
-              <h1 className={styles.ecoTitle}>
-                <span className={styles.ecoHighlight}>L STUDIO • SINCE 2012</span><br/>READY TO IMPRESS
-              </h1>
-            </div>
-            <div className={styles.ecoHeaderRight}>
-              <p className={styles.ecoDesc}>
-                You dream about sleek, healthy looking hair that looks picture perfect, ready to rock on any occasion? We will make your dreams come true. Our expert stylists are dedicated to bringing out your natural beauty with precision and care. Step into our sanctuary and let us transform your everyday look into an absolute masterpiece.
-              </p>
-              <button className={styles.ecoKnowMoreBtn} id="home-eco-read-more-btn">READ MORE</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.ecoBottomSection}>
-        <div className="container">
-          <div className={styles.ecoBottomGrid}>
-            <div className={styles.ecoImageContainer}>
-              <div className={styles.ecoParallaxWrapper}>
-                <img 
-                  ref={parallaxImgRef}
-                  src={store4} 
-                  alt="L Studio Interior" 
-                  className={styles.ecoParallaxImage}
-                />
-              </div>
-            </div>
-
-            <div className={styles.ecoAccordionContainer}>
-              <div className={styles.ecoAccordionItem}>
-                <div className={styles.ecoAccordionHeader} onClick={() => toggleAccordion('artistry')}>
-                  <h2>The Artistry</h2>
-                  <div className={styles.ecoIconWrapper}>
-                    {openAccordion === 'artistry' ? <Minus size={20} /> : <Plus size={20} />}
-                  </div>
-                </div>
-                <div className={`${styles.ecoAccordionContent} ${openAccordion === 'artistry' ? styles.ecoOpen : ''}`}>
-                  <div className={styles.ecoContentInner}>
-                    <img src={store6} alt="The Artistry" className={styles.ecoContentImage} />
-                    <p>Our master stylists blend classic techniques with modern trends to craft bespoke looks. Every cut, color, and treatment is tailored exclusively to complement your unique features and lifestyle.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className={styles.ecoAccordionItem}>
-                <div className={styles.ecoAccordionHeader} onClick={() => toggleAccordion('experience')}>
-                  <h2>The Experience</h2>
-                  <div className={styles.ecoIconWrapper}>
-                    {openAccordion === 'experience' ? <Minus size={20} /> : <Plus size={20} />}
-                  </div>
-                </div>
-                <div className={`${styles.ecoAccordionContent} ${openAccordion === 'experience' ? styles.ecoOpen : ''}`}>
-                  <div className={styles.ecoContentInner}>
-                    <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHzsr65ZT9Ihn1WX2BB9cxXDorNKQIvW_FL2YdsZJBgeEzWyym_8iGEusEvdMHn1iQONP16K_t-SRizDMLYjX7tJEAnt1q0y2U9NwCh60fSkUkBeuOnUEG9rqls1NK-6GqvusQlFi-d8r46=w612-h765-n-k-no-nu" alt="The Experience" className={styles.ecoContentImage} />
-                    <p>From the moment you arrive, you're enveloped in a luxurious sanctuary. We prioritize your comfort and relaxation, ensuring every visit is a rejuvenating escape from the everyday.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className={styles.ecoAccordionItem}>
-                <div className={styles.ecoAccordionHeader} onClick={() => toggleAccordion('philosophy')}>
-                  <h2>The Philosophy</h2>
-                  <div className={styles.ecoIconWrapper}>
-                    {openAccordion === 'philosophy' ? <Minus size={20} /> : <Plus size={20} />}
-                  </div>
-                </div>
-                <div className={`${styles.ecoAccordionContent} ${openAccordion === 'philosophy' ? styles.ecoOpen : ''}`}>
-                  <div className={styles.ecoContentInner}>
-                    <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAGd_gVEvFogYElyvnYx28c55yXLpNi6fEK6tJQ_871SUd5sASuLrvRqKLstZjr_Xhu-Wx2CyYyp3z65XAOha1mg9LMqcmGWN-WV1LC7IdeqvZdpQcecHqtno2yEtheDy6BF3zM=w612-h612-n-k-no-nu" alt="The Philosophy" className={styles.ecoContentImage} />
-                    <p>We believe that true beauty stems from healthy hair and confident self-expression. We exclusively use premium, eco-friendly products that nourish your hair without compromising on breathtaking results.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    
 
       
 
-      {/* Banner Section */}
-      <section className={styles.bannerSection}>
-        <div className={styles.bannerBackground}>
-          <img ref={bannerImgRef} src={bannerImg} alt="L Studio Branches" />
-        </div>
-        <div className="container">
-          <div className={styles.bannerContent}>
-            <h2>L STUDIO  PREMIUM <br /> FAMILY SALON</h2>
-            <p>
-              We have a total of 4 branches, one of which <br /> is situated in Sobha City mall and boasts an <br /> impressive entrance space on the ground floor. <br /> Additionally, we have plans to open 2 more <br /> branches in the near future, located in Cochin <br /> and Calicut.
-            </p>
-            <Button className={styles.bannerButton} id="home-banner-view-more-btn">VIEW MORE</Button>
+      {/* 4. Replica Banner Section */}
+      <section className={styles.replicaBannerSection}>
+        <div className={styles.replicaBannerGrid}>
+          <div className={styles.replicaBannerImageCol}>
+            <img src={bannerImg} alt="L Studio Branches" className={styles.replicaBannerImage} />
+          </div>
+          <div className={styles.replicaBannerTextCol}>
+            <div className={styles.replicaBannerTextInner}>
+              <h2 className={styles.replicaBannerTitle}>
+                L Studio Premium<br/>
+                <span className={styles.replicaBannerScript}>Family Salon</span>
+              </h2>
+              <div className={styles.replicaBannerDesc}>
+                <p>We have a total of 4 branches, one of which<br/>is situated in Sobha City mall and boasts an<br/>impressive entrance space on the ground floor.</p>
+                <p>Additionally, we have plans to open 2 more<br/>branches in the near future, located in Cochin<br/>and Calicut.</p>
+              </div>
+              <button className={styles.replicaBannerBtn} id="home-banner-view-more-btn">VIEW MORE</button>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 4. Hair & Beauty Services */}
-      <section className={styles.replicaSection}>
-        <div className="container">
-          <div className={styles.replicaHeader}>
-            <h3>Hair & Beauty Services</h3>
-            <p>We carry the finest beauty products and offer the largest selection of beauty services in the area.</p>
-          </div>
-
-          {/* Row 1 - Hair Styling */}
-          <div className={styles.replicaGrid}>
-            <div className={styles.replicaFeatured}>
-              <div className={styles.replicaFeaturedImg}>
-                <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&q=80&w=800" alt="Hair Styling" />
-              </div>
-              <div className={styles.replicaFeaturedContent}>
-                <h4>HAIR STYLING</h4>
-                <p>
-                  Our expert stylists create bespoke looks tailored to your unique features and lifestyle.
+      {/* 4. Expertise Section (Services) */}
+      <section className={styles.expertiseSection}>
+        
+        {/* Group 1: Header + Hair Styling */}
+        <div className={styles.expertiseTopGroup}>
+          <div className={styles.beigeBlockLeft}></div>
+          <div className={styles.expertiseContent}>
+            
+            {/* Header Area */}
+            <div className={styles.expertiseHeader}>
+              <div className={styles.expertiseHeaderContent}>
+                <h3 className={styles.expertiseSubtitle}>Hair Salon in The City</h3>
+                <p className={styles.expertiseIntro}>
+                  We carry the finest beauty products and offer the largest selection of beauty services in the area.
                 </p>
-                <button id="home-hair-styling-read-more-btn">READ MORE</button>
+                <h2 className={styles.expertiseTitle}>OUR EXPERTISE</h2>
               </div>
             </div>
-            <div className={styles.replicaStandard}>
-              <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=800" alt="Hair Color" />
-            </div>
-            <div className={styles.replicaStandard}>
-              <img src="https://images.unsplash.com/photo-1620331311520-246422fd82f9?auto=format&fit=crop&q=80&w=800" alt="Hair Treatment" />
-            </div>
-          </div>
 
-          {/* Row 2 - Makeup & Bridal */}
-          <div className={styles.replicaGridReverse}>
-            <div className={styles.replicaStandard}>
-              <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=800" alt="Bridal Makeup" />
-            </div>
-            <div className={styles.replicaStandard}>
-              <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&q=80&w=800" alt="Makeup Brushes" />
-            </div>
-            <div className={styles.replicaFeatured}>
-              <div className={styles.replicaFeaturedContent}>
-                <h4>MAKEUP & BRIDAL</h4>
-                <p>
-                  Flawless makeup application for your most important days, ensuring you look breathtaking.
-                </p>
-                <button id="home-makeup-read-more-btn">READ MORE</button>
+            {/* Row 1: Hair Styling (Text Left, Image Right) */}
+            <div className={styles.expertiseRow}>
+              <div className={styles.expertiseColText}>
+                <div className={styles.expertiseTextInner}>
+                  <h4 className={styles.expertiseServiceTitle}>Hair Styling</h4>
+                  <p className={styles.expertiseServiceIntro}>
+                    We pride ourselves in giving you the style that your hair deserves.
+                  </p>
+                  <p className={styles.expertiseServiceDesc}>
+                    Our expert stylists create bespoke looks tailored to your unique features and lifestyle. 
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+                  </p>
+                  <button className={styles.expertiseBookBtn}>BOOK</button>
+                </div>
               </div>
-              <div className={styles.replicaFeaturedImg}>
-                <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&q=80&w=800" alt="Professional Makeup" />
+              <div className={styles.expertiseColImageWrapper}>
+                <div className={styles.expertiseImageInner}>
+                  <img src={hairstylingImg} alt="Hair Styling" />
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Row 3 - Spa & Wellness */}
-          <div className={`${styles.replicaGrid} ${styles.replicaGridLast}`}>
-            <div className={styles.replicaFeatured}>
-              <div className={styles.replicaFeaturedImg}>
-                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=800" alt="Spa & Wellness" />
-              </div>
-              <div className={styles.replicaFeaturedContent}>
-                <h4>SPA & WELLNESS</h4>
-                <p>
-                  A complete sanctuary for your mind and body, offering premium massages and skin treatments.
-                </p>
-                <button id="home-spa-read-more-btn">READ MORE</button>
-              </div>
-            </div>
-            <div className={styles.replicaStandard}>
-              <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=800" alt="Facial" />
-            </div>
-            <div className={styles.replicaStandard}>
-              <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&q=80&w=800" alt="Relaxation" />
-            </div>
           </div>
         </div>
+
+        {/* Group 2: Makeup & Bridal */}
+        <div className={styles.expertiseMiddleGroup}>
+          <div className={styles.beigeBlockRight}></div>
+          <div className={styles.expertiseContent}>
+
+            {/* Row 2: Makeup & Bridal (Image Left, Text Right) */}
+            <div className={`${styles.expertiseRow} ${styles.expertiseRowReverse}`}>
+              <div className={styles.expertiseColText}>
+                <div className={styles.expertiseTextInner}>
+                  <h4 className={styles.expertiseServiceTitle}>Makeup & Bridal</h4>
+                  <p className={styles.expertiseServiceIntro}>
+                    Give an intro to what your offer is about and how it helps them here.
+                  </p>
+                  <p className={styles.expertiseServiceDesc}>
+                    Flawless makeup application for your most important days, ensuring you look breathtaking. 
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+                  </p>
+                  <button className={styles.expertiseBookBtn}>BOOK</button>
+                </div>
+              </div>
+              <div className={styles.expertiseColImageWrapper}>
+                <div className={styles.expertiseImageInner}>
+                  <img src={bridal2Img} alt="Makeup & Bridal" />
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        {/* Group 3: Spa & Wellness */}
+        <div className={styles.expertiseBottomGroup}>
+          <div className={styles.beigeBlockLeftBottom}></div>
+          <div className={styles.expertiseContent}>
+
+            {/* Row 3: Spa & Wellness (Text Left, Image Right) */}
+            <div className={styles.expertiseRow}>
+              <div className={styles.expertiseColText}>
+                <div className={styles.expertiseTextInner}>
+                  <h4 className={styles.expertiseServiceTitle}>Spa & Wellness</h4>
+                  <p className={styles.expertiseServiceIntro}>
+                    A complete sanctuary for your mind and body.
+                  </p>
+                  <p className={styles.expertiseServiceDesc}>
+                    Offering premium massages and skin treatments to rejuvenate your senses. 
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+                  </p>
+                  <button className={styles.expertiseBookBtn}>BOOK</button>
+                </div>
+              </div>
+              <div className={styles.expertiseColImageWrapper}>
+                <div className={styles.expertiseImageInner}>
+                  <img src={spaImg} alt="Spa & Wellness" />
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
       </section>
 
       {/* 5. Signature Selection */}
       <section className={styles.signatureSection}>
         <div className="container">
-          <div className={styles.signatureGrid}>
-            <div className={styles.signatureImage}>
-              <img src={signatureImg} alt="Signature Selection" />
-              <div className={styles.imageBadge}>
-                <span>L STUDIO</span>
-                <small>Est. 2008</small>
-              </div>
+          <div className={styles.signatureLayout}>
+            
+            {/* Left Column: Typography Title */}
+            <div className={styles.signatureTitleWrapper}>
+              <h2 className={styles.signatureTitle}>HAIR CARE</h2>
+              <h2 className={styles.signatureSubtitle}>PRICES</h2>
             </div>
+
+            {/* Right Column: Price List */}
             <div className={styles.signatureList}>
-              <h2>HAIR CARE <br/><span className="gold-text italic">PRICES</span></h2>
               <div className={styles.priceItems}>
                 <div className={styles.priceItem}>
-                  <span className={styles.priceName}>HAIR CUT</span>
+                  <div className={styles.priceInfo}>
+                    <span className={styles.priceName}>HAIR CUT</span>
+                    <span className={styles.priceDesc}>Curabitur id posuere libero vel aliquet ipsum</span>
+                  </div>
                   <span className={styles.priceLine}></span>
                   <span className={styles.priceValue}>₹ 699</span>
                 </div>
                 <div className={styles.priceItem}>
-                  <span className={styles.priceName}>HAIR SPA</span>
+                  <div className={styles.priceInfo}>
+                    <span className={styles.priceName}>HAIR SPA</span>
+                    <span className={styles.priceDesc}>Curabitur id posuere libero vel aliquet ipsum</span>
+                  </div>
                   <span className={styles.priceLine}></span>
                   <span className={styles.priceValue}>₹ 1299</span>
                 </div>
                 <div className={styles.priceItem}>
-                  <span className={styles.priceName}>SMOOTHENING</span>
+                  <div className={styles.priceInfo}>
+                    <span className={styles.priceName}>SMOOTHENING</span>
+                    <span className={styles.priceDesc}>Curabitur id posuere libero vel aliquet ipsum</span>
+                  </div>
                   <span className={styles.priceLine}></span>
                   <span className={styles.priceValue}>₹ 4999</span>
                 </div>
                 <div className={styles.priceItem}>
-                  <span className={styles.priceName}>KERATIN TREATMENT</span>
+                  <div className={styles.priceInfo}>
+                    <span className={styles.priceName}>KERATIN TREATMENT</span>
+                    <span className={styles.priceDesc}>Curabitur id posuere libero vel aliquet ipsum</span>
+                  </div>
                   <span className={styles.priceLine}></span>
                   <span className={styles.priceValue}>₹ 7999</span>
                 </div>
                 <div className={styles.priceItem}>
-                  <span className={styles.priceName}>HIGHLIGHTS</span>
+                  <div className={styles.priceInfo}>
+                    <span className={styles.priceName}>HIGHLIGHTS</span>
+                    <span className={styles.priceDesc}>Curabitur id posuere libero vel aliquet ipsum</span>
+                  </div>
                   <span className={styles.priceLine}></span>
                   <span className={styles.priceValue}>₹ 399</span>
                 </div>
                 <div className={styles.priceItem}>
-                  <span className={styles.priceName}>GLOBAL COLOUR</span>
+                  <div className={styles.priceInfo}>
+                    <span className={styles.priceName}>GLOBAL COLOUR</span>
+                    <span className={styles.priceDesc}>Curabitur id posuere libero vel aliquet ipsum</span>
+                  </div>
                   <span className={styles.priceLine}></span>
                   <span className={styles.priceValue}>₹ 4999</span>
                 </div>
               </div>
-              <a href="#" className={styles.downloadLink}>DOWNLOAD FULL MENU (PDF)</a>
             </div>
+
           </div>
         </div>
       </section>
 
       
       {/* 7. Testimonial Slider */}
-      <div ref={testimonialWrapperRef}>
-        <TestimonialSlider />
-      </div>
+ 
       {/* Banner Section */}
       <div ref={secondBannerWrapperRef}>
         <BannerSection />

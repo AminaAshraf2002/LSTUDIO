@@ -91,17 +91,16 @@
 /* Responsive */
 @media (max-width: 768px) {
   .bannerGrid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr; /* Stack vertically (2 rows) */
   }
 
   .bannerItem {
-    height: auto;
-    aspect-ratio: auto;
+    height: 40vh; /* Give it a good height */
   }
   
   .bannerItem img {
-    height: auto;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
   }
 
   .bannerContent {
@@ -110,28 +109,27 @@
   }
 
   .bannerTitle {
-    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
     margin-bottom: 0.5rem;
   }
 
   .bannerLink {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
   }
 }
 
 @media (max-width: 480px) {
   .bannerGrid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 
   .bannerItem {
-    height: auto;
-    aspect-ratio: auto;
+    height: 35vh;
   }
   
   .bannerItem img {
-    height: auto;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
   }
 
   .bannerContent {
@@ -140,11 +138,11 @@
   }
 
   .bannerTitle {
-    font-size: 1.2rem;
+    font-size: 1.8rem;
     margin-bottom: 0.5rem;
   }
   
   .bannerLink {
-    font-size: 0.6rem;
+    font-size: 0.8rem;
   }
 }

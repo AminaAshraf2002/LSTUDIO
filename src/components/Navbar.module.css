@@ -47,6 +47,10 @@
   transform: scale(1.6);
 }
 
+.navbar:not(.scrolled) .logo img {
+  filter: invert(1) brightness(2);
+}
+
 .navLinks {
   display: flex;
   gap: 32px;
@@ -58,9 +62,13 @@
   font-weight: 600;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: rgb(0, 0, 0);
+  color: white;
   opacity: 1;
   position: relative;
+}
+
+.scrolled .link {
+  color: black;
 }
 
 .link:hover {
@@ -142,7 +150,7 @@
   
   .mobileMenuBtn {
     display: block;
-    color: black !important;
+    color: white !important;
   }
   
   .container {

@@ -52,11 +52,11 @@
 
 
 .heroTitle {
-  font-family: var(--font-sans) !important;
+  font-family: 'Cormorant Garamond', serif !important;
   font-size: 3rem;
   color: #ffffff !important;
   margin-bottom: 24px;
-  font-weight: 600;
+  text-transform: uppercase;
 }
 
 
