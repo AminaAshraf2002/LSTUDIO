@@ -319,9 +319,12 @@
   }
 
   .lumora-category-cover, .lumora-cover {
-    height: 130vw !important; /* Maps exactly to standard PDF paper aspect ratio to prevent spilling */
-    min-height: 130vw !important;
-    max-height: 135vw !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    page-break-before: always !important;
+    break-before: page !important;
     overflow: hidden;
   }
 
