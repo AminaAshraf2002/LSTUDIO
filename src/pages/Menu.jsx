@@ -3,8 +3,8 @@ import { Link as RouterLink } from 'react-router-dom';
 import './Menu.css';
 import logoImg from '../assets/blacklogo.png';
 
-const API_URL = 'http://localhost:5000/api';
-const SERVER_URL = 'http://localhost:5000';
+const API_URL = 'https://lstudio-menu.onrender.com/api';
+const SERVER_URL = 'https://lstudio-menu.onrender.com';
 
 function Menu() {
   const [categories, setCategories] = useState([]);
@@ -74,7 +74,7 @@ function Menu() {
             className="lumora-page lumora-category-cover"
             style={
               category.imageUrl
-                ? { backgroundImage: `url(${SERVER_URL}${category.imageUrl})` }
+                ? { backgroundImage: `url(${category.imageUrl})` }
                 : { backgroundColor: 'var(--lumora-bg)' }
             }
           >
