@@ -311,8 +311,6 @@
   /* Cover Images and Pricing Pages */
   .lumora-page, .lumora-cover, .lumora-category-cover, .lumora-pricing-page {
     width: 100% !important;
-    height: auto !important;
-    aspect-ratio: 1 / 1.414 !important; /* Perfect A4 aspect ratio */
     margin: 0 !important;
     box-sizing: border-box !important;
     page-break-after: always !important;
@@ -320,6 +318,16 @@
     page-break-inside: avoid !important;
     break-inside: avoid !important;
     overflow: hidden !important;
+  }
+
+  .lumora-cover, .lumora-category-cover {
+    height: 90vh !important; /* Safe height inside print margins */
+    max-height: 260mm !important; /* Prevents being too tall on desktop */
+  }
+
+  .lumora-cover-logo {
+    -webkit-filter: invert(1) brightness(2) sepia(1) hue-rotate(330deg) saturate(3) !important;
+    filter: invert(1) brightness(2) sepia(1) hue-rotate(330deg) saturate(3) !important;
   }
 
   /* Specific padding for category cover to position title */
