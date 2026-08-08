@@ -102,9 +102,9 @@ function Menu() {
                 className={`lumora-page lumora-pricing-page ${index % 2 === 0 ? 'lumora-theme-dark' : 'lumora-theme-light'}`}
               >
                 <div className="lumora-pricing-container">
-                  <h3 className="lumora-pricing-title">
-                    {category.name} {chunkIndex > 0 ? '(Cont.)' : ''}
-                  </h3>
+                  {chunkIndex === 0 && (
+                    <h3 className="lumora-pricing-title">{category.name}</h3>
+                  )}
                   <div className="lumora-price-list">
                     {chunk.map((item) => (
                       <div key={item.id} className="lumora-price-item">

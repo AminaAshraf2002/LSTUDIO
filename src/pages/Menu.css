@@ -286,12 +286,11 @@
 @media print {
   @page {
     margin: 0;
+    size: A4 portrait;
   }
 
   html, body {
-    width: 100%;
-    height: auto !important;
-    min-height: 100% !important;
+    width: 210mm !important;
     margin: 0 !important;
     padding: 0 !important;
     background-color: var(--lumora-bg);
@@ -304,44 +303,37 @@
   }
 
   .lumora-menu-wrapper {
-    width: 100%;
+    width: 210mm !important;
     margin: 0;
     padding: 0;
   }
 
-  .lumora-page, .lumora-cover {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  .lumora-page, .lumora-cover, .lumora-category-cover, .lumora-pricing-page {
+    width: 210mm !important;
+    height: 297mm !important;
+    max-height: 297mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
     page-break-after: always !important;
     break-after: page !important;
-  }
-
-  .lumora-category-cover, .lumora-cover {
-    height: auto !important;
-    aspect-ratio: 1 / 1.414 !important; /* Forces A4 paper ratio relative to width */
-    max-height: none !important;
     page-break-inside: avoid !important;
     break-inside: avoid !important;
-    page-break-before: always !important;
-    break-before: page !important;
-    overflow: hidden;
+    overflow: hidden !important;
   }
 
   .lumora-pricing-page {
     display: block !important;
-    min-height: 100vh !important;
-    height: auto !important;
-    padding: 10% !important;
+    padding: 15mm !important; /* Internal padding for pricing text */
   }
 
   .lumora-pricing-container {
     margin: 0 auto;
+    width: 100%;
   }
 
   .lumora-back-cover {
-    page-break-after: auto;
+    padding: 15mm !important;
   }
 }
 
