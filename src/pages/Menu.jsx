@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import html2pdf from 'html2pdf.js';
 import './Menu.css';
 import logoImg from '../assets/blacklogo.png';
 
@@ -29,8 +30,25 @@ function Menu() {
     fetchData();
   }, []);
 
-  const handlePrint = () => {
-    window.print();
+  const handlePrint = async () => {
+    const element = document.querySelector('.lumora-menu-wrapper');
+    const opt = {
+      margin: 0,
+      filename: 'LStudio_Menu.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2, useCORS: true, windowWidth: 1024, scrollY: 0 },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+    
+    // Force standard desktop layout for the PDF capture
+    element.classList.add('generating-pdf');
+    
+    // Small delay to allow CSS class to apply
+    await new Promise(resolve => setTimeout(resolve, 50));
+    
+    html2pdf().set(opt).from(element).save().then(() => {
+      element.classList.remove('generating-pdf');
+    });
   };
 
   if (loading) {
