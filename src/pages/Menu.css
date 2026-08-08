@@ -319,8 +319,9 @@
   }
 
   .lumora-category-cover, .lumora-cover {
-    height: 100vh !important; /* Use vh to fill the screen/page */
-    min-height: 100vh !important;
+    height: 90vh !important; /* Safe height to prevent spilling to next page due to print headers */
+    min-height: 250mm !important;
+    max-height: 260mm !important;
     overflow: hidden;
   }
 
