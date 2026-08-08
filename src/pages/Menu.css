@@ -319,8 +319,9 @@
   }
 
   .lumora-category-cover, .lumora-cover {
-    height: 100vh !important;
-    max-height: 100vh !important;
+    height: auto !important;
+    aspect-ratio: 1 / 1.414 !important; /* Forces A4 paper ratio relative to width */
+    max-height: none !important;
     page-break-inside: avoid !important;
     break-inside: avoid !important;
     page-break-before: always !important;

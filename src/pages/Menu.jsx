@@ -41,6 +41,14 @@ function Menu() {
     );
   }
 
+  const chunkArray = (array, size) => {
+    const chunks = [];
+    for (let i = 0; i < array.length; i += size) {
+      chunks.push(array.slice(i, i + size));
+    }
+    return chunks;
+  };
+
   const groupedItems = categories
     .map((cat) => ({
       ...cat,
@@ -67,48 +75,60 @@ function Menu() {
       </section>
 
       {/* Category Pages */}
-      {groupedItems.map((category, index) => (
-        <React.Fragment key={category.id}>
-          {/* Page A: Category Cover Image */}
-          <section
-            className="lumora-page lumora-category-cover"
-            style={
-              category.imageUrl
-                ? { backgroundImage: `url(${category.imageUrl})` }
-                : { backgroundColor: 'var(--lumora-bg)' }
-            }
-          >
-            <div className="lumora-category-cover-title">
-              <h2>{category.name}</h2>
-            </div>
-          </section>
-
-          {/* Page B: Category Pricing List */}
-          <section className={`lumora-page lumora-pricing-page ${index % 2 === 0 ? 'lumora-theme-dark' : 'lumora-theme-light'}`}>
-            <div className="lumora-pricing-container">
-              <h3 className="lumora-pricing-title">{category.name}</h3>
-              <div className="lumora-price-list">
-                {category.items.map((item) => (
-                  <div key={item.id} className="lumora-price-item">
-                    <div className="lumora-price-row-line">
-                      <span className="lumora-item-name">{item.name}</span>
-                      <span className="lumora-item-price">
-                        {item.priceIsStartingFrom && (
-                          <span className="lumora-item-note">from </span>
-                        )}
-                        ₹{item.price}
-                      </span>
-                    </div>
-                    {item.description && (
-                      <div className="lumora-item-desc">{item.description}</div>
-                    )}
-                  </div>
-                ))}
+      {groupedItems.map((category, index) => {
+        // Chunk items so that we strictly show a maximum of 8 items per page
+        const itemChunks = chunkArray(category.items, 8);
+        
+        return (
+          <React.Fragment key={category.id}>
+            {/* Page A: Category Cover Image */}
+            <section
+              className="lumora-page lumora-category-cover"
+              style={
+                category.imageUrl
+                  ? { backgroundImage: `url(${category.imageUrl})` }
+                  : { backgroundColor: 'var(--lumora-bg)' }
+              }
+            >
+              <div className="lumora-category-cover-title">
+                <h2>{category.name}</h2>
               </div>
-            </div>
-          </section>
-        </React.Fragment>
-      ))}
+            </section>
+
+            {/* Page B: Category Pricing List (Paginated) */}
+            {itemChunks.map((chunk, chunkIndex) => (
+              <section 
+                key={`${category.id}-chunk-${chunkIndex}`} 
+                className={`lumora-page lumora-pricing-page ${index % 2 === 0 ? 'lumora-theme-dark' : 'lumora-theme-light'}`}
+              >
+                <div className="lumora-pricing-container">
+                  <h3 className="lumora-pricing-title">
+                    {category.name} {chunkIndex > 0 ? '(Cont.)' : ''}
+                  </h3>
+                  <div className="lumora-price-list">
+                    {chunk.map((item) => (
+                      <div key={item.id} className="lumora-price-item">
+                        <div className="lumora-price-row-line">
+                          <span className="lumora-item-name">{item.name}</span>
+                          <span className="lumora-item-price">
+                            {item.priceIsStartingFrom && (
+                              <span className="lumora-item-note">from </span>
+                            )}
+                            ₹{item.price}
+                          </span>
+                        </div>
+                        {item.description && (
+                          <div className="lumora-item-desc">{item.description}</div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </section>
+            ))}
+          </React.Fragment>
+        );
+      })}
 
       {/* Back Cover */}
       <section className="lumora-cover lumora-back-cover">
