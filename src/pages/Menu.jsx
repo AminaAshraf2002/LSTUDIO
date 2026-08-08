@@ -199,7 +199,7 @@ function Menu() {
       {/* Back Cover */}
       <section className="lumora-cover lumora-back-cover">
         <div className="lumora-back-content">
-          <img src={isGeneratingPdf ? whiteLogoSrc : logoImg} alt="L Studio Logo" className="lumora-back-logo" />
+          <img src={logoImg} alt="L Studio Logo" className="lumora-back-logo" />
           <p>PREMIUM FAMILY SALON</p>
           
           <div className="lumora-contact-info">
