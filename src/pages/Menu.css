@@ -326,13 +326,14 @@
   }
 
   .lumora-pricing-page {
+    display: block !important;
     min-height: 100vh !important;
     height: auto !important;
+    padding: 10% !important;
   }
 
-  .lumora-pricing-page {
-    justify-content: center;
-    padding: 10%;
+  .lumora-pricing-container {
+    margin: 0 auto;
   }
 
   .lumora-back-cover {
