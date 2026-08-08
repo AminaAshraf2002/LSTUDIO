@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import html2pdf from 'html2pdf.js';
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
 import './Menu.css';
 import logoImg from '../assets/blacklogo.png';
 
@@ -11,6 +12,8 @@ function Menu() {
   const [categories, setCategories] = useState([]);
   const [menuItems, setMenuItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [whiteLogoSrc, setWhiteLogoSrc] = useState(logoImg);
+  const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,27 +31,72 @@ function Menu() {
       }
     };
     fetchData();
+
+    // Generate white version of the logo for canvas rendering
+    const img = new Image();
+    img.src = logoImg;
+    img.crossOrigin = 'Anonymous';
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+      try {
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const data = imageData.data;
+        for (let i = 0; i < data.length; i += 4) {
+          data[i] = 255 - data[i];     // r
+          data[i + 1] = 255 - data[i + 1]; // g
+          data[i + 2] = 255 - data[i + 2]; // b
+        }
+        ctx.putImageData(imageData, 0, 0);
+        setWhiteLogoSrc(canvas.toDataURL());
+      } catch (e) {
+        // Fallback if cross-origin taint blocks getImageData
+        setWhiteLogoSrc(logoImg);
+      }
+    };
   }, []);
 
   const handlePrint = async () => {
-    const element = document.querySelector('.lumora-menu-wrapper');
-    const opt = {
-      margin: 0,
-      filename: 'LStudio_Menu.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2, useCORS: true, windowWidth: 1024, scrollY: 0 },
-      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-    };
+    if (isGeneratingPdf) return;
+    setIsGeneratingPdf(true);
     
-    // Force standard desktop layout for the PDF capture
-    element.classList.add('generating-pdf');
-    
-    // Small delay to allow CSS class to apply
-    await new Promise(resolve => setTimeout(resolve, 50));
-    
-    html2pdf().set(opt).from(element).save().then(() => {
-      element.classList.remove('generating-pdf');
-    });
+    try {
+      const wrapper = document.querySelector('.lumora-menu-wrapper');
+      wrapper.classList.add('generating-pdf');
+      
+      // Wait for CSS to apply
+      await new Promise(resolve => setTimeout(resolve, 100));
+      
+      // Get all individual pages
+      const pages = document.querySelectorAll('.lumora-page, .lumora-cover');
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      
+      // Render each page to canvas ONE BY ONE to save iOS memory!
+      for (let i = 0; i < pages.length; i++) {
+        const canvas = await html2canvas(pages[i], {
+          scale: 1.5, // 1.5 is crisp enough but prevents iOS memory crash
+          useCORS: true,
+          windowWidth: 1024,
+          scrollY: 0
+        });
+        
+        const imgData = canvas.toDataURL('image/jpeg', 0.95);
+        if (i > 0) pdf.addPage();
+        pdf.addImage(imgData, 'JPEG', 0, 0, 210, 297);
+      }
+      
+      pdf.save('LStudio_Menu.pdf');
+    } catch (err) {
+      console.error('Error generating PDF:', err);
+      alert('Failed to generate PDF. Please try again.');
+    } finally {
+      const wrapper = document.querySelector('.lumora-menu-wrapper');
+      if (wrapper) wrapper.classList.remove('generating-pdf');
+      setIsGeneratingPdf(false);
+    }
   };
 
   if (loading) {
@@ -81,14 +129,14 @@ function Menu() {
         <RouterLink to="/services" className="lumora-back-btn">
           &larr; Back to Services
         </RouterLink>
-        <button onClick={handlePrint} className="lumora-download-btn">
-          Download / Print Menu
+        <button onClick={handlePrint} className="lumora-download-btn" disabled={isGeneratingPdf}>
+          {isGeneratingPdf ? 'Generating PDF...' : 'Download / Print Menu'}
         </button>
       </div>
 
       {/* Cover Page */}
       <section className="lumora-cover">
-        <img src={logoImg} alt="L Studio Logo" className="lumora-cover-logo" />
+        <img src={isGeneratingPdf ? whiteLogoSrc : logoImg} alt="L Studio Logo" className="lumora-cover-logo" />
         <p>Premium Family Salon</p>
       </section>
 
@@ -151,7 +199,7 @@ function Menu() {
       {/* Back Cover */}
       <section className="lumora-cover lumora-back-cover">
         <div className="lumora-back-content">
-          <img src={logoImg} alt="L Studio Logo" className="lumora-back-logo" />
+          <img src={isGeneratingPdf ? whiteLogoSrc : logoImg} alt="L Studio Logo" className="lumora-back-logo" />
           <p>PREMIUM FAMILY SALON</p>
           
           <div className="lumora-contact-info">
