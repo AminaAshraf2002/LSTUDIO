@@ -67,7 +67,7 @@ function Menu() {
       </section>
 
       {/* Category Pages */}
-      {groupedItems.map((category) => (
+      {groupedItems.map((category, index) => (
         <React.Fragment key={category.id}>
           {/* Page A: Category Cover Image */}
           <section
@@ -84,8 +84,9 @@ function Menu() {
           </section>
 
           {/* Page B: Category Pricing List */}
-          <section className="lumora-page lumora-pricing-page">
+          <section className={`lumora-page lumora-pricing-page ${index % 2 === 0 ? 'lumora-theme-dark' : 'lumora-theme-light'}`}>
             <div className="lumora-pricing-container">
+              <h3 className="lumora-pricing-title">{category.name}</h3>
               <div className="lumora-price-list">
                 {category.items.map((item) => (
                   <div key={item.id} className="lumora-price-item">
