@@ -44,7 +44,7 @@ function Menu() {
   const groupedItems = categories
     .map((cat) => ({
       ...cat,
-      items: menuItems.filter((item) => item.category && item.category._id === cat._id),
+      items: menuItems.filter((item) => item.category && item.category.id === cat.id),
     }))
     .filter((cat) => cat.items.length > 0);
 
@@ -68,7 +68,7 @@ function Menu() {
 
       {/* Category Pages */}
       {groupedItems.map((category) => (
-        <React.Fragment key={category._id}>
+        <React.Fragment key={category.id}>
           {/* Page A: Category Cover Image */}
           <section
             className="lumora-page lumora-category-cover"
@@ -88,7 +88,7 @@ function Menu() {
             <div className="lumora-pricing-container">
               <div className="lumora-price-list">
                 {category.items.map((item) => (
-                  <div key={item._id} className="lumora-price-item">
+                  <div key={item.id} className="lumora-price-item">
                     <div className="lumora-price-row-line">
                       <span className="lumora-item-name">{item.name}</span>
                       <span className="lumora-item-price">
