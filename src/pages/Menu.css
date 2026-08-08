@@ -285,15 +285,17 @@
 /* Print / A4 download */
 @media print {
   @page {
-    size: A4 portrait;
-    margin: 0mm;
+    margin: 0;
   }
 
   html, body {
     width: 100%;
-    margin: 0;
-    padding: 0;
+    height: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
     background-color: var(--lumora-bg);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
   .hide-on-print {
@@ -316,12 +318,13 @@
   }
 
   .lumora-category-cover, .lumora-cover {
-    height: 297mm !important;
+    height: 100vh !important; /* Use vh to fill the screen/page */
+    min-height: 100vh !important;
     overflow: hidden;
   }
 
   .lumora-pricing-page {
-    min-height: 297mm !important;
+    min-height: 100vh !important;
     height: auto !important;
   }
 
