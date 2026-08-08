@@ -114,17 +114,25 @@
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
   padding: 4rem;
+}
+
+.lumora-category-cover-title {
+  width: 100%;
+  max-width: 800px;
 }
 
 .lumora-category-cover-title h2 {
   font-family: var(--font-serif-display);
   font-weight: 300;
-  font-size: clamp(3rem, 7vw, 6rem);
+  font-size: clamp(4rem, 8vw, 7rem);
   color: var(--lumora-cream);
   margin: 0;
   text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  text-align: left;
 }
 
 /* Pricing Page Themes */
@@ -300,14 +308,21 @@
 
   .lumora-page, .lumora-cover {
     width: 100%;
-    height: 100vh;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    page-break-after: always !important;
+    break-after: page !important;
+  }
+
+  .lumora-category-cover, .lumora-cover {
+    height: 297mm !important;
     overflow: hidden;
-    page-break-inside: avoid;
-    page-break-after: always;
-    break-after: page;
+  }
+
+  .lumora-pricing-page {
+    min-height: 297mm !important;
+    height: auto !important;
   }
 
   .lumora-pricing-page {
