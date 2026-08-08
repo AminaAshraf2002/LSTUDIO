@@ -99,7 +99,7 @@ function Menu() {
             {itemChunks.map((chunk, chunkIndex) => (
               <section 
                 key={`${category.id}-chunk-${chunkIndex}`} 
-                className={`lumora-page lumora-pricing-page ${index % 2 === 0 ? 'lumora-theme-dark' : 'lumora-theme-light'}`}
+                className={`lumora-page lumora-pricing-page ${(index + chunkIndex) % 2 === 0 ? 'lumora-theme-dark' : 'lumora-theme-light'}`}
               >
                 <div className="lumora-pricing-container">
                   {chunkIndex === 0 && (
