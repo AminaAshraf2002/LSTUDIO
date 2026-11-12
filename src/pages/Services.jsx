@@ -192,8 +192,8 @@ const Services = () => {
                 <p>satisfied clients</p>
               </div>
               <div className={styles.statItem}>
-                <h4>20+</h4>
-                <p>professional doctors</p>
+                <h4>10+</h4>
+                <p>professional staffs</p>
               </div>
             </div>
           </div>
