@@ -171,14 +171,14 @@ const Services = () => {
             </div>
             
             <div className={styles.aboutContent}>
-              <h3 className={styles.aboutTitle}>ABOUT THE CLINIC</h3>
+              <h3 className={styles.aboutTitle}>ABOUT THE SALON</h3>
               <p className={styles.aboutDesc}>
-                L Studio is a space of aesthetics and professionalism. We combine advanced technologies, medical approach, and care for your beauty at every stage.
+                L Studio is a space of aesthetics and professionalism. We combine advanced technologies, curated approach, and care for your beauty at every stage.
               </p>
               <ul className={styles.aboutChecklist}>
-                <li><span className={styles.check}>&check;</span> Modern equipment</li>
-                <li><span className={styles.check}>&check;</span> Signature techniques</li>
-                <li><span className={styles.check}>&check;</span> High service standards</li>
+                <li><span className={styles.check}>1.</span> Modern equipment</li>
+                <li><span className={styles.check}>2.</span> Signature techniques</li>
+                <li><span className={styles.check}>3.</span> High service standards</li>
               </ul>
             </div>
             
