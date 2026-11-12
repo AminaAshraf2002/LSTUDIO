@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import styles from './Home.module.css';
 import Button from '../components/Button';
 import SectionHeading from '../components/SectionHeading';
@@ -32,6 +33,107 @@ import TestimonialSlider from '../components/TestimonialSlider';
 import BannerSection from '../components/BannerSection';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+
+const siteUrl = 'https://www.lstudiosalons.in';
+const pageTitle = 'Best Salon in Thrissur | L Studio Family Salon';
+const pageDescription = 'Looking for the best salon in Thrissur? Visit L Studio Family Salon for professional haircuts, hair spa, hair botox, keratin treatment, hair colouring, skincare and beauty services.';
+const pageImage = `${siteUrl}/assets/blacklogo-D.png`;
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'BeautySalon',
+  name: 'L Studio Family Salon',
+  image: pageImage,
+  '@id': siteUrl,
+  url: siteUrl,
+  telephone: '+91-9400333894',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Fathima Nagar',
+    addressLocality: 'Thrissur',
+    addressRegion: 'Kerala',
+    postalCode: '680001',
+    addressCountry: 'IN'
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 10.5276,
+    longitude: 76.2144
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      opens: '09:30',
+      closes: '20:00'
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Sunday',
+      opens: '10:00',
+      closes: '19:00'
+    }
+  ],
+  priceRange: '₹₹',
+  currenciesAccepted: 'INR',
+  paymentAccepted: 'Cash, Credit Card, UPI',
+  areaServed: {
+    '@type': 'City',
+    name: 'Thrissur'
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Salon Services',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Hair Styling & Cuts'
+        }
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Hair Treatments (Spa, Botox, Keratin)'
+        }
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Hair Colouring & Highlights'
+        }
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Makeup & Bridal Services'
+        }
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Skin Care & Facials'
+        }
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Spa & Wellness'
+        }
+      }
+    ]
+  },
+  sameAs: [
+    'https://www.facebook.com/lstudiofamilysalon',
+    'https://www.instagram.com/lstudiofamilysalon'
+  ]
+};
 
 
 
@@ -190,7 +292,31 @@ const Home = () => {
   };
 
   return (
-    <div className={styles.home} ref={containerRef}>
+    <>
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={siteUrl} />
+
+        <meta property="og:locale" content="en_IN" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:url" content={siteUrl} />
+        <meta property="og:site_name" content="L Studio Family Salon" />
+        <meta property="og:image" content={pageImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content={pageImage} />
+
+        <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
+      </Helmet>
+      <div className={styles.home} ref={containerRef}>
       {/* 1. Full-bleed GSAP Hero */}
       <HeroSection data={heroData} />
 
@@ -568,6 +694,7 @@ const Home = () => {
         </div>
       </section> */}
     </div>
+  </>
   );
 };
 

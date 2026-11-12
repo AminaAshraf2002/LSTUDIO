@@ -1,8 +1,63 @@
 import React, { useRef, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import styles from './Contact.module.css';
 import Button from '../components/Button';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
+
+const siteUrl = 'https://www.lstudiosalons.in';
+const pageTitle = 'Contact L Studio | Family Salon in Thrissur, Kerala';
+const pageDescription = 'Contact L Studio Family Salon in Thrissur, Kerala, for salon enquiries, appointments and location details. Get in touch with our team for professional salon care.';
+const pageImage = `${siteUrl}/assets/blacklogo-D.png`;
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contact L Studio Family Salon',
+  description: pageDescription,
+  url: `${siteUrl}/contact`,
+  mainEntity: {
+    '@type': 'BeautySalon',
+    name: 'L Studio Family Salon',
+    url: siteUrl,
+    telephone: '+91-9400333894',
+    email: 'lstudio.ef@gmail.com',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Fathima Nagar',
+      addressLocality: 'Thrissur',
+      addressRegion: 'Kerala',
+      postalCode: '680001',
+      addressCountry: 'IN'
+    },
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        opens: '09:30',
+        closes: '20:00'
+      },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: 'Sunday',
+        opens: '10:00',
+        closes: '19:00'
+      }
+    ],
+    location: {
+      '@type': 'Place',
+      name: 'L Studio Family Salon - Thrissur Flagship',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Fathima Nagar',
+        addressLocality: 'Thrissur',
+        addressRegion: 'Kerala',
+        postalCode: '680001',
+        addressCountry: 'IN'
+      }
+    }
+  }
+};
 
 const Contact = () => {
   const form = useRef();
@@ -33,8 +88,32 @@ const Contact = () => {
         }
       );
   };
-  return (
-    <div className={styles.contactPage}>
+return (
+    <>
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={`${siteUrl}/contact`} />
+
+        <meta property="og:locale" content="en_IN" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:url" content={`${siteUrl}/contact`} />
+        <meta property="og:site_name" content="L Studio Family Salon" />
+        <meta property="og:image" content={pageImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content={pageImage} />
+
+        <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
+      </Helmet>
+      <div className={styles.contactPage}>
       
       {/* 1. Hero Section */}
       <section className={styles.heroSection}>
@@ -148,6 +227,7 @@ const Contact = () => {
         </div>
       </section>
     </div>
+  </>
   );
 };
 

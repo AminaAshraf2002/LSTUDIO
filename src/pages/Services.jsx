@@ -1,9 +1,105 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import styles from './Services.module.css';
 import Button from '../components/Button';
 import storeImg from '../assets/store.webp';
 import { motion, AnimatePresence } from 'framer-motion';
+
+const siteUrl = 'https://www.lstudiosalons.in';
+const pageTitle = 'Salon & Beauty Services in Thrissur | L Studio Family Salon';
+const pageDescription = 'Explore L Studio Family Salon for professional salon care, hair styling, grooming and beauty services in Thrissur, Kerala. Enjoy quality care in a comfortable family-friendly environment.';
+const pageImage = `${siteUrl}/assets/blacklogo-D.png`;
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'L Studio Family Salon Services',
+  description: pageDescription,
+  url: `${siteUrl}/services`,
+  provider: {
+    '@type': 'BeautySalon',
+    name: 'L Studio Family Salon',
+    url: siteUrl
+  },
+  areaServed: 'Thrissur, Kerala, India',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Salon Services',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Hair Cuts & Styling',
+          description: 'Skilled professionals sculpt and transform hair, crafting personalized looks.'
+        },
+        price: '800',
+        priceCurrency: 'INR'
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Hair Treatments',
+          description: 'Deep conditioning and restorative therapies for optimal hair health.'
+        },
+        price: '1500',
+        priceCurrency: 'INR'
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Hair Colouring & Highlights',
+          description: 'Precision color application, from natural highlights to bold fashion colors.'
+        },
+        price: '3000',
+        priceCurrency: 'INR'
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Keratin & Smoothening',
+          description: 'Strengthening treatments that repair damage and reduce frizz.'
+        },
+        price: '4999',
+        priceCurrency: 'INR'
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Bridal & Makeup Services',
+          description: 'Professional artistry enhancing features for a glamorous wedding look.'
+        },
+        price: '15000',
+        priceCurrency: 'INR'
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Facials & Skin Treatments',
+          description: 'Tailored treatments that cleanse, nourish, and refresh your skin.'
+        },
+        price: '1200',
+        priceCurrency: 'INR'
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Spa & Wellness',
+          description: 'A complete sanctuary for your mind and body with premium massages.'
+        },
+        price: '2000',
+        priceCurrency: 'INR'
+      }
+    ]
+  }
+};
 
 const servicesData = {
   'Hair Care': [
@@ -36,8 +132,32 @@ const servicesData = {
 const Services = () => {
   const [activeFilter, setActiveFilter] = useState('Hair Care');
 
-  return (
-    <div className={styles.servicesPage}>
+return (
+    <>
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={`${siteUrl}/services`} />
+
+        <meta property="og:locale" content="en_IN" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:url" content={`${siteUrl}/services`} />
+        <meta property="og:site_name" content="L Studio Family Salon" />
+        <meta property="og:image" content={pageImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content={pageImage} />
+
+        <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
+      </Helmet>
+      <div className={styles.servicesPage}>
       
       {/* 1. Hero Section */}
       <section className={styles.heroSection}>
@@ -261,6 +381,7 @@ const Services = () => {
       </section>
 
     </div>
+  </>
   );
 };
 

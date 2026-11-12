@@ -1,9 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
 import './Menu.css';
 import logoImg from '../assets/blacklogo.png';
+
+const siteUrl = 'https://www.lstudiosalons.in';
+const pageTitle = 'Service Menu & Pricing | L Studio Family Salon';
+const pageDescription = 'View the complete service menu and pricing for L Studio Family Salon in Thrissur. Hair care, skin care, makeup and bridal services with transparent pricing.';
+const pageImage = `${siteUrl}/assets/blacklogo-D.png`;
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'PriceSpecification',
+  name: 'L Studio Family Salon - Service Menu & Pricing',
+  description: pageDescription,
+  url: `${siteUrl}/menu`,
+  priceCurrency: 'INR',
+  minPrice: '500',
+  maxPrice: '15000',
+  validFrom: '2026-01-01',
+  provider: {
+    '@type': 'BeautySalon',
+    name: 'L Studio Family Salon',
+    url: siteUrl
+  }
+};
 
 const API_URL = 'https://lstudio-menu.onrender.com/api';
 const SERVER_URL = 'https://lstudio-menu.onrender.com';
@@ -101,9 +124,34 @@ function Menu() {
 
   if (loading) {
     return (
-      <div className="lumora-loading">
-        <span>Loading Menu…</span>
-      </div>
+      <>
+        <Helmet>
+          <title>{pageTitle}</title>
+          <meta name="description" content={pageDescription} />
+          <meta name="robots" content="index, follow" />
+          <link rel="canonical" href={`${siteUrl}/menu`} />
+
+          <meta property="og:locale" content="en_IN" />
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content={pageTitle} />
+          <meta property="og:description" content={pageDescription} />
+          <meta property="og:url" content={`${siteUrl}/menu`} />
+          <meta property="og:site_name" content="L Studio Family Salon" />
+          <meta property="og:image" content={pageImage} />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={pageTitle} />
+          <meta name="twitter:description" content={pageDescription} />
+          <meta name="twitter:image" content={pageImage} />
+
+          <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
+        </Helmet>
+        <div className="lumora-loading">
+          <span>Loading Menu…</span>
+        </div>
+      </>
     );
   }
 
@@ -123,7 +171,31 @@ function Menu() {
     .filter((cat) => cat.items.length > 0);
 
   return (
-    <div className="lumora-menu-wrapper">
+    <>
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={`${siteUrl}/menu`} />
+
+        <meta property="og:locale" content="en_IN" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:url" content={`${siteUrl}/menu`} />
+        <meta property="og:site_name" content="L Studio Family Salon" />
+        <meta property="og:image" content={pageImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content={pageImage} />
+
+        <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
+      </Helmet>
+      <div className="lumora-menu-wrapper">
       {/* Action bar — hidden on print */}
       <div className="lumora-action-bar hide-on-print">
         <RouterLink to="/services" className="lumora-back-btn">
@@ -230,6 +302,7 @@ function Menu() {
         </div>
       </section>
     </div>
+  </>
   );
 }
 

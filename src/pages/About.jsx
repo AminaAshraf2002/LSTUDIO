@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import styles from './About.module.css';
@@ -9,6 +10,36 @@ import image3 from '../assets/store3.webp';
 import image4 from '../assets/store4.webp';
 import image5 from '../assets/store5.webp';
 import image6 from '../assets/store6.webp';
+
+const siteUrl = 'https://www.lstudiosalons.in';
+const pageTitle = 'About L Studio | Family Salon in Thrissur, Kerala';
+const pageDescription = 'Get to know L Studio Family Salon, a trusted family salon in Thrissur, Kerala, focused on professional salon care, hair styling, grooming and beauty experiences.';
+const pageImage = `${siteUrl}/assets/blacklogo-D.png`;
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'About L Studio Family Salon',
+  description: pageDescription,
+  url: `${siteUrl}/about`,
+  mainEntity: {
+    '@type': 'BeautySalon',
+    name: 'L Studio Family Salon',
+    url: siteUrl,
+    foundingDate: '2012',
+    location: {
+      '@type': 'Place',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Fathima Nagar',
+        addressLocality: 'Thrissur',
+        addressRegion: 'Kerala',
+        postalCode: '680001',
+        addressCountry: 'IN'
+      }
+    }
+  }
+};
 
 /* -------------------------------------------------------------------- */
 /*  Content — kept as data so the page reads as one clear source of truth */
@@ -74,7 +105,31 @@ const About = () => {
   }, []);
 
   return (
-    <div className={styles.aboutPage}>
+    <>
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={`${siteUrl}/about`} />
+
+        <meta property="og:locale" content="en_IN" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:url" content={`${siteUrl}/about`} />
+        <meta property="og:site_name" content="L Studio Family Salon" />
+        <meta property="og:image" content={pageImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content={pageImage} />
+
+        <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
+      </Helmet>
+      <div className={styles.aboutPage}>
 
       {/* ============================= HERO ============================= */}
       <section className={styles.heroSection}>
@@ -269,6 +324,7 @@ const About = () => {
         </button>
       </div> */}
     </div>
+  </>
   );
 };
 

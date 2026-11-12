@@ -1,0 +1,11 @@
+# Robots.txt for L Studio Family Salon
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.lstudiosalons.in/sitemap.xml
+
+# Disallow admin or private paths
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
